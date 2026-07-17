@@ -466,7 +466,7 @@
             </label>
             <div class="setting-item">
               <span>Số lượng câu hỏi:</span>
-              <input type="number" id="limit-opt" min="1" value="20">
+              <input type="number" id="limit-opt" min="1" value="25">
               <span id="max-limit-text" style="opacity: 0.75; font-family: monospace; font-size:12px;"></span>
             </div>
           </div>
@@ -482,8 +482,8 @@
 
   <div id="quiz-screen" style="display:none;">
     <div class="meta-row">
-      <span id="progress-text">Câu 1 / 20</span>
-      <span id="score-text">Đúng: 0</span>
+      <span id="progress-text">Câu 1 / 25</span>
+      <span id="score-text">Đúng: 00</span>
     </div>
     <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
 
@@ -587,7 +587,7 @@ const QUESTIONS = [
   },
   {
     ch: 1,
-    q: "Biểu đồ Venn mô tả mối quan hệ giữa Rủi ro (Risk) và Sự không chắc chắn (Uncertainty)chỉ ra rằng:",
+    q: "Biểu đồ Venn mô tả mối quan hệ giữa Rủi ro (Risk) và Sự không chắc chắn (Uncertainty) chỉ ra rằng:",
     opts: [
       "Rủi ro là một phần nhỏ (tập hợp con) nằm hoàn toàn trong lòng của Sự không chắc chắn.",
       "Sự không chắc chắn là một phần nhỏ nằm trong lòng Rủi ro.",
@@ -595,7 +595,7 @@ const QUESTIONS = [
       "Khái niệm Rủi ro bao trùm và rộng lớn hơn nhiều so với khái niệm Sự không chắc chắn."
     ],
     correct: 0,
-    exp: "Slide 9 thể hiện vòng tròn màu xanh lá cây đại diện cho \"Uncertainty\" (Sự bất định) bao bọc hoàn toàn vòng tròn nhỏ màu hồng bên trong đại diện cho \"Risk\" (Rủi ro). Điều này nghĩa là rủi ro là vùng bất định đã được nhận diện và đo lường."
+    exp: "Slide 9 thể hiện vòng tròn đại diện cho \"Uncertainty\" (Sự bất định) bao bọc hoàn toàn vòng tròn nhỏ bên trong đại diện cho \"Risk\" (Rủi ro). Điều này nghĩa là rủi ro là vùng bất định đã được nhận diện và đo lường."
   },
   {
     ch: 1,
@@ -679,7 +679,7 @@ const QUESTIONS = [
       "Quyết định 1622 của Ngân hàng Nhà nước."
     ],
     correct: 0,
-    exp: "Slide 17 ghi nhận Vietcombank tiến hành phân loại nợ đối với các khoản cho vay, cam kết ngoại bảng... \"dựa trên yêu cầu của Thông tư 11 (Thuyết minh 2(f)), qua đó thường xuyên đánh giá rủi ro...\""
+    exp: "Slide 17 ghi nhận Vietcombank tiến hành phân loại nợ đối với các khoản cho vay, cam kết ngoại bảng... \"dựa trên yêu cầu của Thông tư 11, qua đó thường xuyên đánh giá rủi ro...\""
   },
   {
     ch: 1,
@@ -739,7 +739,7 @@ const QUESTIONS = [
       "First Line of Defense - Second Line of Defense - Third Line of Defense - Board of Directors."
     ],
     correct: 0,
-    exp: "Slide 31 (Figure 3.2 Key activities of the risk management process) trình bày quy trình 5 bước cơ bản: Giao tiếp & Tư vấn; Thiết lập bối cảnh; Đánh giá rủi ro; Xử lý rủi ro; Giám sát & Đánh giá lại."
+    exp: "Slide 31 trình bày quy trình 5 bước cơ bản: Giao tiếp & Tư vấn; Thiết lập bối cảnh; Đánh giá rủi ro; Xử lý rủi ro; Giám sát & Đánh giá lại."
   },
   {
     ch: 1,
@@ -830,7 +830,7 @@ const QUESTIONS = [
     q: "Mục tiêu cốt lõi của Trụ cột 3 (Market Discipline - Kỷ luật thị trường) trong Basel II là gì?",
     opts: [
       "Khuyến khích kỷ luật thị trường bằng cách yêu cầu công khai thông tin vốn, mức độ rủi ro và quy trình đánh giá vốn.",
-      "Trao quyền cho các cơ quan quản lý nhà nước để trực tiếp phạt tiền và đình chỉ hoạt động ngân hàng vi phạm.",
+      "Trao quyền cho các cơ quan quản lý nhà nước để trực tiếp phạt tiền và đóng cửa ngân hàng vi phạm.",
       "Buộc ngân hàng phải bảo mật tuyệt đối mọi số liệu tài chính nội bộ để tránh làn sóng rút tiền hàng loạt.",
       "Thiết lập một cơ chế định giá thống nhất cho toàn bộ dịch vụ cho vay của thị trường."
     ],
@@ -868,7 +868,7 @@ const QUESTIONS = [
       "Quản lý nguồn vốn, bảng cân đối kế toán, rủi ro thanh khoản và rủi ro lãi suất.",
       "Thẩm định chi tiết các hồ sơ cho vay bán lẻ của khách hàng cá nhân.",
       "Phát triển và nâng cấp hệ thống phần mềm công nghệ thông tin Core Banking.",
-      "Thiết kế các gói sản phẩm tiền gửi tiết kiệm tích lũy cho doanh nghiệp."
+      "Thiết kế các gói sản phẩm tiền gửi tiết kiệm tiết kiệm cho doanh nghiệp."
     ],
     correct: 0,
     exp: "Slide 47 viết: \"Bộ phận ALM (Asset and Liability Management Department) chịu trách nhiệm quản lý nguồn vốn và bảng cân đối của ngân hàng, và kiểm soát rủi ro thanh khoản và lãi suất.\""
@@ -1021,12 +1021,12 @@ const QUESTIONS = [
   },
   {
     ch: 2,
-    q: "Hai kênh truyền dẫn tác động chủ yếu của rủi ro lãi suất đến giá trị ngân hàng thương mại là:",
+    q: "Two channels of impact for interest rate risk are:",
     opts: [
-      "Kênh thu nhập (Earnings perspective) và Kênh giá trị kinh tế (Economic value perspective).",
-      "Kênh hạch toán kế toán (Accounting book) và Kênh danh mục giao dịch (Trading book).",
-      "Kênh rủi ro đối tác (Counterparty channel) và Kênh rủi ro thanh khoản (Liquidity channel).",
-      "Kênh huy động ngắn hạn (Short-term funding) và Kênh cho vay trung dài hạn (Long-term lending)."
+      "Earnings perspective (NII) and Economic value perspective (PV).",
+      "Accounting book and Trading book.",
+      "Counterparty risk and Liquidity risk.",
+      "Short-term funding and Long-term lending."
     ],
     correct: 0,
     exp: "Slide 8 giới thiệu hai kênh tác động: Kênh thu nhập (đo lường NII thay đổi bằng Repricing Gap) và Kênh giá trị kinh tế (đo lường hiện giá PV dòng tiền thay đổi bằng VaR, Duration-based VaR)."
@@ -1105,8 +1105,7 @@ const QUESTIONS = [
   },
   {
     ch: 2,
-    q: "Khi tính toán VaR cho khoảng thời gian ngắn (horizon ngắn), giả định nào thường được áp dụng và công thức rút gọn tương ứng là gì?"
-    ,
+    q: "Khi tính toán VaR cho khoảng thời gian ngắn (horizon ngắn), giả định nào thường được áp dụng và công thức rút gọn tương ứng là gì?",
     opts: [
       "Giả định trung bình biến động $\\mu \\approx 0 \\implies VaR = Z(\\alpha) \\times \\sigma$.",
       "Giả định độ lệch chuẩn biến động $\\sigma \\approx 1 \\implies VaR = Z(\\alpha) + \\mu$.",
@@ -1294,7 +1293,7 @@ const QUESTIONS = [
       "Không thực hiện bất kỳ hành động nào vì Gap dương luôn mang lại lợi ích chắc chắn khi lãi suất giảm sâu."
     ],
     correct: 0,
-    exp: "Slide 31 ghi rõ: When $GAP > 0$, nếu lãi suất giảm thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn tài sản/rút ngắn kỳ hạn nguồn vốn, (2) Tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất."
+    exp: "Slide 31 ghi rõ: Khi $GAP > 0$, nếu lãi suất giảm thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn tài sản/rút ngắn kỳ hạn nguồn vốn, (2) Tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất."
   },
   {
     ch: 2,
@@ -1306,13 +1305,559 @@ const QUESTIONS = [
       "Không cần thiết lập các chiến lược do Gap âm luôn mang lại thặng dư lợi nhuận NII lớn khi lãi suất tăng."
     ],
     correct: 0,
-    exp: "Slide 31 ghi rõ: When $GAP < 0$, nếu lãi suất tăng thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn nguồn vốn/rút ngắn kỳ hạn tài sản, (2) Giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất."
+    exp: "Slide 31 ghi rõ: Khi $GAP < 0$, nếu lãi suất tăng thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn nguồn vốn/rút ngắn kỳ hạn tài sản, (2) Giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất."
+  },
+
+  // ==================== CHƯƠNG 3 ====================
+  {
+    ch: 3,
+    q: "Theo bài giảng của PGS. TS. Lê Hoàng Anh, nhận dạng rủi ro tín dụng đóng vai trò gì đối với toàn bộ hoạt động quản lý rủi ro?",
+    opts: [
+      "Là cơ sở của toàn bộ hoạt động quản lý rủi ro vì nó xác định phương hướng và phạm vi đánh giá, đo lường và phòng ngừa.",
+      "Là công cụ duy nhất dùng để tự động tính toán nhu cầu dự phòng cụ thể và trích lập quỹ dự phòng.",
+      "Là phương pháp định lượng giúp triệt tiêu hoàn toàn rủi ro lãi suất trên sổ ngân hàng.",
+      "Là khâu hạch toán tài sản ngoại bảng cuối cùng trước khi lập báo cáo tài chính."
+    ],
+    correct: 0,
+    exp: "Slide 3 Chương 3 ghi nhận: \"Nhận dạng rủi ro là cơ sở của toàn bộ hoạt động quản lý rủi ro vì nó xác định phương hướng và phạm vi đánh giá rủi ro, đo lường rủi ro và phòng ngừa rủi ro.\""
+  },
+  {
+    ch: 3,
+    q: "Theo định nghĩa của PGS. TS. Lê Hoàng Anh, thực hiện tốt hoạt động nhận biết rủi ro giúp giải quyết các vấn đề nào?",
+    opts: [
+      "Phân loại rủi ro, xác định nguyên nhân, xác suất xảy ra rủi ro và mức độ tổn thất.",
+      "Tự động tính toán nhu cầu vốn dự phòng và loại bỏ hoàn toàn các khoản nợ quá hạn nhóm 5.",
+      "Đo lường thời lượng Macaulay và xác định Modified Duration của danh mục trái phiếu.",
+      "Hợp nhất hệ thống kiểm soát nội bộ 3 tuyến phòng thủ thành một bộ phận chuyên trách duy nhất."
+    ],
+    correct: 0,
+    exp: "Slide 3 của bài giảng Nhận biết rủi ro tín dụng chỉ rõ việc thực hiện tốt nhận biết rủi ro giúp giải quyết: Phân loại rủi ro, xác định nguyên nhân dẫn đến rủi ro, xác suất xảy ra và mức độ tổn thất."
+  },
+  {
+    ch: 3,
+    q: "Bước đầu tiên trong quy trình 3 bước nhận biết rủi ro tín dụng tiềm ẩn của Ye (2016) là gì và nội dung thực hiện ra sao?",
+    opts: [
+      "Sàng lọc (screening): Chọn cách phân loại xác định rủi ro theo sản phẩm, quy trình, sự kiện, hiện tượng hoặc con người ngay từ đầu.",
+      "Sàng lọc (screening): Kiểm toán lại toàn bộ báo cáo tài chính của 100% doanh nghiệp vay vốn.",
+      "Theo dõi (monitoring): Phân tích tổng thể về rủi ro và tổn thất thông qua các rủi ro tiềm ẩn.",
+      "Chẩn đoán (diagnosing): Phân tích, phán đoán hệ quả và tìm nguyên nhân chính để xử lý tài sản bảo đảm."
+    ],
+    correct: 0,
+    exp: "Slide 5 giải thích: \"Bước đầu tiên là sàng lọc (screening), nhà quản lý nên chọn cách phân loại xác định rủi ro theo sản phẩm, quy trình, sự kiện, hiện tượng hoặc những người có thể chứa rủi ro tiềm ẩn ngay từ đầu.\""
+  },
+  {
+    ch: 3,
+    q: "Trong quy trình của Ye (2016), bước 'Chẩn đoán' (diagnosing) đòi hỏi nhà quản lý rủi ro tín dụng phải làm gì?",
+    opts: [
+      "Phải phân tích và phán đoán hệ quả của rủi ro, tổn thất và tìm ra nguyên nhân chính từ quá trình này.",
+      "Tiến hành định giá lại tài sản bảo đảm theo nguyên tắc mark-to-market hàng tháng.",
+      "Khảo sát thực địa để tìm hiểu thái độ hợp tác của ban lãnh đạo doanh nghiệp.",
+      "Tính toán xác suất vỡ nợ PD và tỷ lệ tổn thất khi vỡ nợ LGD cho từng nhóm khách hàng."
+    ],
+    correct: 0,
+    exp: "Slide 5 ghi rõ: \"Bước thứ ba là chẩn đoán (diagnosing), nhà quản lý rủi ro phải phân tích và phán đoán hệ quả của rủi ro, tổn thất và tìm ra nguyên nhân chính từ quá trình này.\""
+  },
+  {
+    ch: 3,
+    q: "Trong các yếu tố chính của quá trình nhận biết rủi ro, thuật ngữ 'Nguồn rủi ro' (risk source) được định nghĩa là gì?",
+    opts: [
+      "Là nguồn các yếu tố góp phần vào các kết quả tiêu cực hay tích cực.",
+      "Các nguyên nhân trực tiếp gây ra tổn thất cụ thể cho tổ chức tài chính.",
+      "Các điều kiện tạo ra hoặc làm tăng các khả năng và mức độ của tổn thất.",
+      "Các đối tượng chịu các kết quả được hay mất khi sự kiện rủi ro xảy ra."
+    ],
+    correct: 0,
+    exp: "Slide 6 định nghĩa rõ: \"Nguồn rủi ro (risk source): là nguồn các yếu tố góp phần vào các kết quả tiêu cực hay tích cực.\""
+  },
+  {
+    ch: 3,
+    q: "Yếu tố 'Mối nguy hiểm' (hazard) trong nhận biết rủi ro được slide 6 giải thích như thế nào?",
+    opts: [
+      "Các nguyên nhân của tổn thất, nguồn nguy hiểm tiềm ẩn và trong một số trường hợp có thể hiểu là một nguồn rủi ro.",
+      "Các điều kiện làm tăng khả năng xảy ra tổn thất đối với tài sản vô hình của tổ chức.",
+      "Các kết quả được hay mất khi sự kiện xảy ra do lỗi của hệ thống công nghệ thông tin lõi.",
+      "Tập hợp các biện pháp phòng ngừa rủi ro của ban kiểm soát nội bộ ngân hàng."
+    ],
+    correct: 0,
+    exp: "Slide 6 nêu rõ: \"Mối nguy hiểm (hazard): các nguyên nhân của tổn thất, nguồn nguy hiểm tiềm ẩn - Mối nguy trong một số trường hợp cũng có thể hiểu là một nguồn rủi ro.\""
+  },
+  {
+    ch: 3,
+    q: "PGS. TS. Lê Hoàng Anh chia mối nguy (hazard) trong rủi ro tín dụng thành ba loại cụ thể nào?",
+    opts: [
+      "Mối nguy vật chất, mối nguy đạo đức và mối nguy tinh thần.",
+      "Mối nguy pháp lý, mối nguy chính trị và mối nguy tài chính.",
+      "Mối nguy môi trường vĩ mô, mối nguy nội bộ và mối nguy đối tác.",
+      "Mối nguy định tính, mối nguy định lượng và mối nguy bán định lượng."
+    ],
+    correct: 0,
+    exp: "Slide 8 ghi nhận mối nguy trong rủi ro tín dụng thông thường được tiếp cận với ba loại là mối nguy vật chất, mối nguy đạo đức và mối nguy tinh thần."
+  },
+  {
+    ch: 3,
+    q: "Mối nguy vật chất (physical hazard) trong rủi ro tín dụng được hiểu là gì?",
+    opts: [
+      "Phản ánh tình trạng vật chất yếu kém; được hiểu là các khung quy định và chính sách tín dụng không đầy đủ, yếu kém, không rõ ràng hoặc không phù hợp.",
+      "Sự hư hỏng cơ học của nhà xưởng, văn phòng làm việc của ngân hàng do thiên tai xảy ra.",
+      "Hành vi cố ý giả mạo hồ sơ pháp lý, hồ sơ tài chính của khách hàng để lừa đảo chiếm đoạt tài sản vay.",
+      "Sự bất cẩn của nhân viên tín dụng do chủ quan tin tưởng vào giá trị tài sản bảo đảm lớn."
+    ],
+    correct: 0,
+    exp: "Slide 8 viết: \"Mối nguy vật chất phản ánh tình trạng vật chất yếu kém làm tăng khả năng xảy ra tổn thất trong hoạt động. Mối nguy vật chất này có thể được hiểu là về các khung quy định và chính sách cơ bản để thực hiện hoạt động tín dụng không đầy đủ yếu kém/không rõ ràng hoặc không phù hợp...\""
+  },
+  {
+    ch: 3,
+    q: "Thế nào là mối nguy tinh thần (morale hazard) trong hoạt động tín dụng ngân hàng?",
+    opts: [
+      "Sự bất cẩn hay thờ ơ của cá nhân do chủ quan cho rằng có người khác kiểm soát, quy trình chặt chẽ, khách hàng có TSBĐ lớn, hoặc đã trích đủ dự phòng.",
+      "Sự không trung thực, lừa đảo có chủ đích của một cá nhân trong quy trình nhằm tư lợi cá nhân.",
+      "Tâm lý lo sợ, bất an của cán bộ tín dụng khi tỷ lệ nợ xấu của chi nhánh vượt mức an toàn.",
+      "Sự không thống nhất về mục tiêu kinh doanh giữa các thành viên của Ủy ban quản lý tài sản nợ - có ALCO."
+    ],
+    correct: 0,
+    exp: "Slide 8 định nghĩa: \"Mối nguy tinh thần lại đề cập đến sự bất cẩn hay thờ ơ của một cá nhân dẫn đến tổn thất vì người này chủ quan cho rằng đã có người khác kiểm soát, quy trình là chặt chẽ hoặc khách hàng có tài sản bảo đảm giá trị lớn, ngân hàng đã trích đủ dự phòng...\""
+  },
+  {
+    ch: 3,
+    q: "Mối hiểm họa (vulnerability) từ phía khách hàng doanh nghiệp trong rủi ro tín dụng bao gồm:",
+    opts: [
+      "Thị trường cung cấp đầu vào bị thu hẹp, giá nguyên vật liệu tăng cao, chi phí sản xuất tăng lên.",
+      "Thu nhập không ổn định, thay đổi công việc hoặc mất việc làm thường xuyên.",
+      "Sử dụng khoản vay ngân hàng để cho vay lại với mức lãi suất cao hơn để ăn chênh lệch.",
+      "Thiếu hồ sơ pháp lý đầy đủ và không hợp tác với cán bộ thẩm định thực địa."
+    ],
+    correct: 0,
+    exp: "Slide 9 chỉ rõ: Đối với khách hàng là doanh nghiệp, mối hiểm họa bao gồm thị trường cung cấp đầu vào bị thu hẹp, giá cả nguyên vật liệu tăng cao, chi phí sản xuất tăng lên..."
+  },
+  {
+    ch: 3,
+    q: "Trường hợp bảo đảm không bằng tài sản (đối nhân), mối hiểm họa cốt lõi phát sinh là gì?",
+    opts: [
+      "Người bảo lãnh không thực hiện nghĩa vụ thanh toán thay cho người vay tín dụng khi người này không có khả năng trả nợ.",
+      "Giá trị thị trường của tài sản bảo đảm biến động theo chiều hướng bất lợi làm giảm đệm an toàn.",
+      "Khách hàng tẩu tán tài sản bảo đảm khiến ngân hàng không thể thực hiện xử lý xiết nợ.",
+      "Cơ quan thi hành án kéo dài thời gian xử lý cưỡng chế tranh chấp hợp đồng thế chấp bảo lãnh."
+    ],
+    correct: 0,
+    exp: "Slide 10 ghi nhận: \"Trường hợp bảo đảm không bằng tài sản (đối nhân): Người bảo lãnh không thực hiện nghĩa vụ thanh toán thay cho người vay tín dụng khi người này không có khả năng trả nợ.\""
+  },
+  {
+    ch: 3,
+    q: "Trong các nguy cơ rủi ro của hoạt động tín dụng, nguy cơ rủi ro về trách nhiệm pháp lý được hiểu là:",
+    opts: [
+      "Các nguy cơ gây ra tổn thất về trách nhiệm pháp lý, có thể là trách nhiệm hình sự do tòa án phán quyết trên cơ sở Bộ Luật Hình sự.",
+      "Nguy cơ ngân hàng bị mất uy tín và không nhận được sự hỗ trợ về mặt chính trị từ chính quyền địa phương.",
+      "Rủi ro cán bộ tín dụng tự ý thay đổi hạn mức tín dụng mà không có sự phê duyệt của Hội đồng tín dụng.",
+      "Nguy cơ khách hàng khởi kiện ngân hàng đòi bồi thường thiệt hại do giải ngân chậm trễ so với kế hoạch."
+    ],
+    correct: 0,
+    exp: "Slide 13 viết rõ về nguy cơ rủi ro trách nhiệm pháp lý: \"Trách nhiệm pháp lý này có thể là trách nhiệm hình sự do toà án quyết định trên cơ sở của Bộ Luật hình sự...\""
+  },
+  {
+    ch: 3,
+    q: "Dấu hiệu cảnh báo sớm nào dưới đây thuộc nhóm chỉ tiêu trên Bảng cân đối kế toán của khách hàng doanh nghiệp vay vốn?",
+    opts: [
+      "Thời gian thu hồi công nợ trung bình gia tăng nhanh; chi phí chờ kết chuyển gia tăng đột biến; doanh nghiệp tập trung nhiều tài sản vô hình.",
+      "Doanh số bán hàng giảm sụt mạnh; xuất hiện các khoản lỗ lớn từ hoạt động kinh doanh cốt lõi.",
+      "Cán bộ tín dụng có quan hệ bất thường với khách hàng; hồ sơ tín dụng thiếu sự chặt chẽ về mặt pháp lý.",
+      "Khách hàng thay đổi thái độ với cán bộ ngân hàng và tỏ ra thiếu hợp tác khi làm việc trực tiếp."
+    ],
+    correct: 0,
+    exp: "Slide 17 liệt kê các dấu hiệu trên Bảng cân đối kế toán: Thời gian thu hồi công nợ trung bình gia tăng nhanh; xuất hiện thêm các điều kiện gia hạn nợ; chi phí chờ kết chuyển gia tăng đột biến; doanh nghiệp tập trung vào nhiều tài sản vô hình; không nhận được BCTC kịp thời."
+  },
+  {
+    ch: 3,
+    q: "Khi phân tích Báo cáo kết quả hoạt động kinh doanh, dấu hiệu rủi ro tín dụng nào phản ánh rõ rệt sự bất thường?",
+    opts: [
+      "Doanh thu bán hàng tăng nhưng lợi nhuận lại giảm nhiều, hoặc lợi nhuận và lưu chuyển tiền ròng hoạt động kinh doanh âm liên tục từ 2 đến 3 kỳ.",
+      "Số dư tài khoản tiền gửi thanh toán của doanh nghiệp tại ngân hàng liên tục duy trì ở mức cao.",
+      "Doanh nghiệp quyết định chuyển hướng mở rộng đầu tư vào các ngành nghề truyền thống có lợi thế cạnh tranh lớn.",
+      "Hồ sơ tín dụng thiếu một số tài liệu hỗ trợ pháp lý và tài sản bảo đảm chưa được đăng ký giao dịch bảo đảm."
+    ],
+    correct: 0,
+    exp: "Slide 17 chỉ rõ các dấu hiệu trên Báo cáo kết quả kinh doanh bao gồm: Doanh thu bán hàng tăng nhưng lợi nhuận giảm nhiều, xuất hiện lỗ hoạt động kinh doanh, lợi nhuận và lưu chuyển tiền ròng âm liên tục từ 2 đến 3 kỳ."
+  },
+  {
+    ch: 3,
+    q: "Trong kỹ thuật phân tích lưu đồ quy trình, dấu hiệu nào cho thấy quy trình cho vay của ngân hàng ĐÃ BỊ VI PHẠM?",
+    opts: [
+      "Không thực hiện đúng các nguyên tắc, quy định khi xem xét, thẩm định và phán quyết tín dụng; cho vay quá mức an toàn so với mức bảo đảm.",
+      "Số dư tài khoản tiền gửi của khách hàng tại ngân hàng sụt giảm nhanh chóng.",
+      "Khách hàng có nhiều chủ nợ khác xuất hiện, đặc biệt là các chủ nợ chỉ nhận tài sản bảo đảm.",
+      "Năng lực tài chính và trình độ chuyên môn của đội ngũ điều hành doanh nghiệp yếu kém."
+    ],
+    correct: 0,
+    exp: "Slide 18 ghi rõ các dấu hiệu quy trình cho vay không tuân thủ: Cán bộ có quan hệ bất thường; Không thực hiện đúng nguyên tắc khi thẩm định, phán quyết; Áp dụng chính sách quá cứng nhắc/lỏng lẻo; Cho vay quá mức an toàn."
+  },
+  {
+    ch: 3,
+    q: "Thông qua phương pháp điều tra thực địa, dấu hiệu rủi ro nào liên quan trực tiếp đến mảng giao dịch ngân hàng?",
+    opts: [
+      "Số dư tài khoản tiền gửi tại ngân hàng giảm; khó khăn khi thanh toán với ngân hàng và phải xin gia hạn nợ.",
+      "Doanh nghiệp thay đổi phạm vi hoạt động sang các lĩnh vực mà họ chưa có nhiều kinh nghiệm thực tế.",
+      "Đội ngũ điều hành của doanh nghiệp thiếu hiểu biết, năng lực yếu kém không đáp ứng được yêu cầu dự án.",
+      "Giá trị thực tế của tài sản đảm bảo sụt giảm nghiêm trọng so với thời điểm định giá ban đầu."
+    ],
+    correct: 0,
+    exp: "Slide 19 nêu rõ các dấu hiệu từ giao dịch ngân hàng: Số dư tài khoản tiền gửi giảm; thời hạn đơn xin vay thay đổi theo mùa vụ đáng kể; xuất hiện các chủ nợ khác; khó khăn khi thanh toán và phải gia hạn nợ."
+  },
+  {
+    ch: 3,
+    q: "Đặc điểm và hạn chế cốt lõi của phương pháp 'Phân tích thống kê tổn thất' (Loss statistical analysis) là gì?",
+    opts: [
+      "Chỉ xem xét các rủi ro hiện có dựa trên hồ sơ lịch sử nên không hình dung được các rủi ro tiềm ẩn khác, không phản ánh toàn diện rủi ro.",
+      "Chi phí thực hiện quá đắt đỏ và đòi hỏi phải áp dụng các thuật toán máy học phi tuyến như mạng neural.",
+      "Chỉ áp dụng được đối với các khoản cho vay bán lẻ cá nhân, không thể áp dụng cho khách hàng doanh nghiệp.",
+      "Phụ thuộc hoàn toàn vào phán đoán chủ quan của cán bộ tín dụng tại các buổi điều tra thực địa."
+    ],
+    correct: 0,
+    exp: "Slide 20 ghi nhận: \"Theo phương pháp này, các nhà quản lý rủi ro tín dụng chỉ xem xét các rủi ro hiện có nên công ty cần thận trọng với các rủi ro này mà không hình dung được các rủi ro tiềm ẩn khác. Vì vậy phương pháp này không thể phản ánh để nhận diện rủi ro một cách toàn diện.\""
+  },
+  {
+    ch: 3,
+    q: "Trong quản lý rủi ro tín dụng, phương pháp 'Phân tích cây sai lỗi' (Fault Tree Analysis) có mục tiêu tối cao là gì?",
+    opts: [
+      "Ngăn ngừa tai nạn xảy ra bằng cách xem xét kết hợp các lỗi từ con người, hệ thống, quy trình để xác định nguyên nhân cụ thể.",
+      "Ước lượng chính xác số dư nợ xấu sẽ phát sinh để trích lập đệm dự phòng rủi ro cụ thể.",
+      "Định giá lại giá trị thanh lý của tài sản thế chấp trong trường hợp khách hàng tuyên bố vỡ nợ.",
+      "Xác định hệ số an toàn vốn tối thiểu CAR theo đúng tinh thần của Trụ cột 1 hiệp ước Basel II."
+    ],
+    correct: 0,
+    exp: "Slide 21 giải thích: \"Phân tích cây lỗi là một kỹ thuật phân tích mối nguy... nhằm ngăn ngừa tai nạn xảy ra. Từ các cây lỗi, nhà quản lý rủi ro tín dụng có thể tính toán con số để phân tích tổn thất.\""
+  },
+
+  // ==================== CHƯƠNG 4 ====================
+  {
+    ch: 4,
+    q: "Trong đo lường rủi ro tín dụng, 'Phân tích rủi ro' (Risk analysis) được định nghĩa chính xác là gì theo slide 3?",
+    opts: [
+      "Xác định hệ quả và xác suất của chúng về các sự kiện rủi ro được nhận diện, sau đó kết hợp chúng để xác định một mức rủi ro.",
+      "Xác định nguyên nhân cốt lõi của nợ xấu và lập tức tiến hành trích lập 100% dự phòng cụ thể.",
+      "Sử dụng các mô hình phán đoán chủ quan 5Cs để chấm điểm tín dụng cho toàn bộ danh mục cho vay.",
+      "Tính toán hệ số RWA theo phương pháp chuẩn của Basel II dựa trên xếp hạng bên ngoài."
+    ],
+    correct: 0,
+    exp: "Slide 3 ghi rõ nguyên văn: \"Phân tích rủi ro bao gồm việc xác định hệ quả và xác suất của chúng về các sự kiện rủi ro được nhận diện. Sau đó hệ quả và xác suất của chúng được kết hợp để xác định một mức rủi ro.\""
+  },
+  {
+    ch: 4,
+    q: "Yêu cầu cốt lõi của bước 'Đánh giá rủi ro' (Risk evaluation) theo slide 3 đòi hỏi nhà quản lý phải thực hiện điều gì?",
+    opts: [
+      "Xem xét các nguyên nhân và nguồn rủi ro, hệ quả của chúng và xác suất hệ quả đó có thể xảy ra.",
+      "Tiến hành định giá lại toàn bộ tài sản bảo đảm của khách hàng theo giá trị thanh lý.",
+      "Tính toán chính xác tỷ lệ an toàn vốn CAR tối thiểu của toàn bộ hệ thống ngân hàng thương mại.",
+      "Chuyển toàn bộ các khoản cho vay thuộc nhóm nợ dưới tiêu chuẩn sang nhóm nợ đủ tiêu chuẩn."
+    ],
+    correct: 0,
+    exp: "Slide 3 ghi rõ: \"Đánh giá rủi ro đòi hỏi xem xét các nguyên nhân và nguồn rủi ro, hệ quả của chúng và xác suất hệ quả đó có thể xảy ra.\""
+  },
+  {
+    ch: 4,
+    q: "Theo slide 4, sự khác biệt lớn nhất giữa phương pháp phân tích rủi ro 'Bán định lượng' và 'Định lượng' là gì?",
+    opts: [
+      "Bán định lượng dùng thang chia bằng số và công thức để đưa ra mức rủi ro; Định lượng ước tính giá trị thực tế theo các đơn vị cụ thể.",
+      "Bán định lượng chỉ dùng các thuật ngữ 'cao', 'trung bình', 'thấp'; Định lượng sử dụng thang chia logarit phi tuyến.",
+      "Bán định lượng chỉ áp dụng cho rủi ro thị trường; Định lượng áp dụng độc quyền cho rủi ro tín dụng.",
+      "Không có sự khác biệt vì cả hai đều sử dụng giá trị tiền tệ cụ thể làm đầu ra duy nhất."
+    ],
+    correct: 0,
+    exp: "Slide 4 chỉ rõ: Phương pháp bán định lượng sử dụng thang chia bằng số đối với hệ quả và xác suất kết hợp bằng công thức. Phương pháp định lượng ước tính giá trị thực tế đối với hệ quả và xác suất, đưa ra mức rủi ro theo các đơn vị cụ thể."
+  },
+  {
+    ch: 4,
+    q: "Theo slide 5, trong cách tiếp cận tiêu chuẩn hóa (Standardized Approach) của Basel II, cơ quan nào chịu trách nhiệm xác định các tổ chức xếp hạng tín nhiệm thỏa điều kiện?",
+    opts: [
+      "Các tổ chức giám sát quốc gia.",
+      "Ủy ban Basel về Giám sát Ngân hàng (BCBS).",
+      "Ngân hàng Thanh toán Quốc tế (BIS).",
+      "Hội đồng Quản trị của chính các ngân hàng thương mại."
+    ],
+    correct: 0,
+    exp: "Slide 5 ghi nhận: \"Các tổ chức giám sát quốc gia có trách nhiệm xác định tổ chức xếp hạng tín nhiệm nào thỏa điều kiện để các ngân hàng có thể sử dụng kết quả của họ trong quá trình xác định các trọng số rủi ro.\""
+  },
+  {
+    ch: 4,
+    q: "Theo Ủy ban Basel, định nghĩa về 'Xếp hạng tín dụng nội bộ' (Internal credit rating) trong ngân hàng thương mại là gì theo slide 5?",
+    opts: [
+      "Đánh giá về rủi ro tín dụng dựa trên các đặc tính rủi ro của khách hàng được cấp tín dụng và các giao dịch cụ thể trong tín dụng.",
+      "Việc thuê các tổ chức xếp hạng tín nhiệm uy tín quốc tế để đánh giá định kỳ danh mục của ngân hàng.",
+      "Hoạt động đánh giá hiệu quả kinh doanh của ban điều hành chi nhánh định kỳ hàng quý dựa trên chỉ số KPIs.",
+      "Bảng phân loại chất lượng tài sản có rủi ro dựa vào các văn bản hướng dẫn hành chính của Ngân hàng Nhà nước."
+    ],
+    correct: 0,
+    exp: "Slide 5 định nghĩa: \"Theo cách tiếp cận IRB của Ủy ban Basel thì xếp hạng tín dụng nội bộ trong ngân hàng là việc đánh giá về rủi ro tín dụng dựa trên các đặc tính rủi ro của khách hàng được cấp tín dụng và các giao dịch cụ thể trong tín dụng.\""
+  },
+  {
+    ch: 4,
+    q: "Trong phương pháp phán đoán dựa vào mô hình 5Cs, nhân tố 'Tính cách' (Character) của khách hàng được đánh giá thông qua khía cạnh nào theo slide 9?",
+    opts: [
+      "Uy tín của khách hàng trong các quan hệ thanh toán, thiện chí của khách hàng trong việc hoàn trả nợ.",
+      "Khả năng thực hiện tốt hoạt động sản xuất kinh doanh và quản trị rủi ro của doanh nghiệp.",
+      "Tổng số vốn chủ sở hữu và khả năng huy động các nguồn lực tài chính bên ngoài khi cần thiết.",
+      "Tính pháp lý và tính thanh khoản trên thị trường của tài sản thế chấp."
+    ],
+    correct: 0,
+    exp: "Slide 9 ghi rõ: \"Tính cách của khách hàng: đề cập đến uy tín của khách hàng trong các quan hệ thanh toán, thiện chí của khách hàng trong việc hoàn trả nợ...\""
+  },
+  {
+    ch: 4,
+    q: "Khi phân tích nhân tố 'Vốn' (Capital) của khách hàng trong mô hình 5Cs, slide 9 chỉ ra người phân tích cần tập trung đánh giá khía cạnh nào?",
+    opts: [
+      "Tính hợp lý, tính hiệu quả của các khoản đầu tư đang thực hiện; khả năng huy động các nguồn vốn khi có nhu cầu.",
+      "Sự chính trực, kiên định và trung thực liên quan đến mục đích sử dụng nguồn vốn vay.",
+      "Khả năng quản trị điều hành và trình độ năng lực chuyên môn của đội ngũ lãnh đạo.",
+      "Các yếu tố thuộc môi trường vĩ mô theo mô hình PESTLE."
+    ],
+    correct: 0,
+    exp: "Slide 9 ghi rõ: \"Vốn của khách hàng... thường được đánh giá thông qua phân tích tính hợp lý, tính hiệu quả của các khoản đầu tư mà khách hàng đang thực hiện; khả năng huy động các nguồn vốn khi có nhu cầu.\""
+  },
+  {
+    ch: 4,
+    q: "Khi phân tích nhân tố 'Điều kiện môi trường kinh doanh' (Conditions) trong mô hình 5Cs, công cụ nào được khuyến nghị áp dụng để phân tích môi trường vĩ mô và môi trường ngành theo slide 10?",
+    opts: [
+      "Môi trường vĩ mô phân tích qua mô hình PESTLE; môi trường ngành phân tích qua mô hình năm lực cạnh tranh của Michael Porter.",
+      "Môi trường vĩ mô phân tích qua mô hình Black-Scholes; môi trường ngành phân tích qua mô hình Merton (1974).",
+      "Môi trường vĩ mô phân tích qua hàm số Z-score; môi trường ngành phân tích qua kỹ thuật phân tích phân biệt MDA.",
+      "Môi trường vĩ mô phân tích qua mô hình Logit; môi trường ngành phân tích qua kỹ thuật lân cận gần nhất K."
+    ],
+    correct: 0,
+    exp: "Slide 10 ghi nhận rõ ràng: \"Trong đó, môi trường vĩ mô có thể được phân tích thông qua mô hình PESTLE. Môi trường ngành có thể được phân tích thông qua mô hình năm lực cạnh tranh của Michael Porter (Porter's Five Forces).\""
+  },
+  {
+    ch: 4,
+    q: "Nguyên tắc cốt lõi của việc đánh giá nhân tố 'Tài sản bảo đảm' (Collateral) trong mô hình 5Cs là gì theo slide 10?",
+    opts: [
+      "Được xem là một nguồn trả nợ phụ, thường yêu cầu khi các Cs khác không được đánh giá cao; các ngân hàng không được phép cho vay chỉ dựa trên TSBĐ.",
+      "Là nguồn trả nợ chính và quan trọng nhất; ngân hàng được quyền ưu tiên giải ngân nếu giá trị TSBĐ định giá cao.",
+      "Được đánh giá độc lập hoàn toàn với tính chất pháp lý và tính thanh khoản của thị trường bất động sản.",
+      "TSBĐ bắt buộc phải thuộc hình thức bảo đảm đối nhân mới được tính điểm an toàn tối đa."
+    ],
+    correct: 0,
+    exp: "Slide 10 nhấn mạnh: \"TSBĐ của khách hàng (nếu có): đề cập đến như là một nguồn trả nợ phụ, thường thì TSBĐ sẽ được yêu cầu khi sự tín nhiệm đối với các 'Cs' khác của khách hàng không được ngân hàng đánh giá cao - các ngân hàng không được phép cho vay chỉ dựa trên TSBĐ.\""
+  },
+  {
+    ch: 4,
+    q: "Theo slide 11, mô hình điểm số tín dụng (Credit Scoring Model) được định nghĩa là gì?",
+    opts: [
+      "Việc đồng nhất hóa các nhân tố chủ yếu có tác động quyết định đến PD bằng việc tổ hợp hoặc xử lý chúng thành số lượng điểm.",
+      "Việc tính toán giá trị tài sản có trọng số rủi ro RWA bằng cách nhân tổng tài sản với hệ số rủi ro quy định.",
+      "Việc xác định giá trị hiện tại PV của toàn bộ dòng tiền thu nhập lãi thuần NII trong tương lai.",
+      "Việc hạch toán toàn bộ chênh lệch đánh giá lại tài sản bảo đảm vào bảng cân đối kế toán hằng ngày."
+    ],
+    correct: 0,
+    exp: "Slide 11 ghi rõ: \"Mô hình điểm số tín dụng là việc đồng nhất hóa các nhân tố chủ yếu có tác động quyết định đến PD bằng việc tổ hợp hoặc xử lý chúng thành số lượng điểm – điểm số tín dụng.\""
+  },
+  {
+    ch: 4,
+    q: "Trong các kỹ thuật phát triển mô hình điểm số tín dụng ở slide 11, những kỹ thuật nào được đề cập trực tiếp?",
+    opts: [
+      "Phân tích phân biệt, Hồi quy logistic, Máy học.",
+      "Thời lượng Macaulay, Modified Duration, Mô hình Gap.",
+      "Phân tích rủi ro tập trung, Đệm thanh khoản tối thiểu, Tỷ lệ CAR.",
+      "Mô hình Black-Scholes, Lý thuyết danh mục hiện đại Markowitz, Hệ số Beta."
+    ],
+    correct: 0,
+    exp: "Slide 11 nêu rõ: \"Để phát triển mô hình điểm số tín dụng, các ngân hàng có thể tiếp cận bằng nhiều kỹ thuật khác nhau, chẳng hạn như kỹ thuật phân tích phân biệt, hồi quy logistic, máy học.\""
+  },
+  {
+    ch: 4,
+    q: "Phát biểu nào mô tả chính xác về dữ liệu đầu ra của mô hình phân tích phân biệt (Discriminant analysis) theo slide 12?",
+    opts: [
+      "Có hai kết quả chất lượng tín dụng hoặc là tốt hoặc là xấu, qua đó phân biệt giữa DN có nguy cơ phá sản và DN không có nguy cơ phá sản.",
+      "Là một giá trị liên tục phản ánh chính xác 100% tỷ lệ tổn thất khi vỡ nợ LGD.",
+      "Là một thang đo định tính bao gồm nhiều mức như 'rất cao', 'cao', 'trung bình', 'thấp', 'rất thấp'.",
+      "Là một vector đa chiều biểu thị giá trị kinh tế của ngân hàng thương mại."
+    ],
+    correct: 0,
+    exp: "Slide 12 chỉ rõ: \"Dữ liệu đầu ra của mô hình phân tích phân biệt có hai kết quả chất lượng tín dụng hoặc là tốt hoặc là xấu, qua đó phân biệt giữa DN có nguy cơ phá sản và DN không có nguy cơ phá sản.\""
+  },
+  {
+    ch: 4,
+    q: "Hàm thống kê Z-score của Altman xây dựng năm 1968 dựa trên cơ sở số liệu của các doanh nghiệp nào tại Mỹ và trong giai đoạn nào?",
+    opts: [
+      "Các DN bị phá sản tại Mỹ từ năm 1946 đến năm 1965.",
+      "Các NHTM cổ phần hoạt động trong giai đoạn khủng hoảng tài chính 2008.",
+      "Các công ty công nghệ niêm yết tại sàn Nasdaq từ năm 1990 đến năm 2000.",
+      "Các tập đoàn sản xuất đa quốc gia trong giai đoạn sau Chiến tranh thế giới thứ nhất."
+    ],
+    correct: 0,
+    exp: "Slide 13 ghi nhận: \"Mô hình dự báo nguy cơ vỡ nợ theo hàm thống kê Z-score được Altman xây dựng (1968) dựa trên cơ sở số liệu của các DN bị phá sản tại Mỹ từ năm 1946 đến năm 1965.\""
+  },
+  {
+    ch: 4,
+    q: "Theo Altman (2000), đối với loại hình 'Doanh nghiệp khác' (không thuộc ngành sản xuất), hàm điểm số Z'' và các ranh giới phân vùng tương ứng là gì theo slide 14?",
+    opts: [
+      "$Z'' = 6.56X_1 + 3.26X_2 + 6.72X_3 + 1.05X_4$; Vùng an toàn khi $Z'' > 2.6$, Vùng nguy hiểm khi $Z'' < 1.1$.",
+      "$Z'' = 1.2X_1 + 1.4X_2 + 3.3X_3 + 0.6X_4 + 0.999X_5$; Vùng an toàn khi $Z'' > 2.99$, Vùng nguy hiểm khi $Z'' < 1.8$.",
+      "$Z'' = 0.717X_1 + 0.847X_2 + 3.107X_3 + 0.42X_4 + 0.998X_5$; Vùng an toàn khi $Z'' > 2.9$, Vùng nguy hiểm khi $Z'' < 1.23$.",
+      "$Z'' = 6.56X_1 + 3.26X_2 + 6.72X_3 + 1.05X_4$; Vùng an toàn khi $Z'' > 3.0$, Vùng nguy hiểm khi $Z'' < 1.5$."
+    ],
+    correct: 0,
+    exp: "Bảng tổng hợp slide 14 chỉ rõ với 'DN khác': Hàm là $Z'' = 6.56X_1 + 3.26X_2 + 6.72X_3 + 1.05X_4$. Ranh giới: An toàn ($Z'' > 2.6$), Cảnh báo ($1.1 < Z'' < 2.6$), Nguy hiểm ($Z'' < 1.1$)."
+  },
+  {
+    ch: 4,
+    q: "Trong mô hình hồi quy Logistic nhị phân (Binary Logistic), xác suất xảy ra sự kiện vỡ nợ ($P_i$) có đặc điểm nào nổi bật so với mô hình điểm số đa nhân tố (MDA) theo slide 16?",
+    opts: [
+      "$P_i$ không phải là hàm tuyến tính của các biến độc lập; khi $X_i$ nhận các giá trị từ $-\\infty$ đến $+\\infty$ thì $P_i$ nhận giá trị từ 0 đến 1.",
+      "$P_i$ là một hàm tuyến tính hoàn toàn của các biến độc lập và có thể nhận các giá trị âm vượt ngoài khoảng 0 và 1.",
+      "$P_i$ chỉ có thể nhận hai giá trị rời rạc duy nhất là đúng bằng 0 hoặc đúng bằng 1 tại mọi thời điểm.",
+      "$P_i$ được tính toán độc lập mà không cần đến các chỉ số tài chính hay phi tài chính của doanh nghiệp."
+    ],
+    correct: 0,
+    exp: "Slide 16 ghi rõ: \"Pi không phải là hàm tuyến tính của các biến độc lập như MDA, khi Xi nhận các giá trị từ - ∞ đến + ∞ thì Pi nhận giá trị từ 0 đến 1.\""
+  },
+  {
+    ch: 4,
+    q: "Khi ứng dụng Máy học (Machine Learning) trong đo lường rủi ro tín dụng, thuật toán 'Lân cận gần nhất K' (KNN) hoạt động dựa trên nguyên lý nào theo slide 17?",
+    opts: [
+      "Thực hiện phân loại dựa trên phương pháp chọn những quan sát gần nhau trong một không gian vector đa chiều phụ thuộc vào số nguyên dương nhỏ $K$.",
+      "Xây dựng mô hình chuỗi thời gian dựa trên các giả định phân phối chuẩn có phân vị $Z(\\alpha)$.",
+      "Giải quyết các bài toán phi tuyến thông qua các hàm kích hoạt mô phỏng tế bào thần kinh sinh học.",
+      "Xác định khoảng cách vỡ nợ bằng cách tính toán giá trị sổ sách của các khoản nợ phải trả."
+    ],
+    correct: 0,
+    exp: "Slide 17 viết rõ: \"Lân cận gần nhất K là một trong số các thuật toán học máy thực hiện phân loại dựa trên phương pháp chọn những quan sát gần nhau trong một không gian vector đa chiều của các quan sát phụ thuộc vào K – một số nguyên dương nhỏ.\""
+  },
+  {
+    ch: 4,
+    q: "Khi áp dụng Máy học, kỹ thuật 'Mạng neural' đặc biệt phù hợp trong trường hợp nào và có ưu điểm gì nổi bật theo slide 18?",
+    opts: [
+      "Phù hợp khi không có công thức toán học miêu tả quan hệ đầu vào/đầu ra, mục tiêu dự báo quan trọng hơn giải thích; kết hợp được quan hệ phi tuyến và sự phụ thuộc giữa các biến.",
+      "Phù hợp khi dữ liệu lịch sử cực kỳ nhỏ và ngân hàng cần hiểu rõ trọng số tuyến tính tường minh của từng biến số hạch toán tài chính.",
+      "Phù hợp khi cơ quan quản lý nhà nước bắt buộc ngân hàng phải công khai giải thích chi tiết các bước tính toán một cách trực quan.",
+      "Phù hợp khi ngân hàng muốn kiểm soát hoàn toàn đạo đức của nhân viên tín dụng hằng ngày ngoài thực địa."
+    ],
+    correct: 0,
+    exp: "Slide 18 ghi rõ: \"Kỹ thuật này đặc biệt phù hợp với mô hình dự báo mà không có công thức toán học nào để miêu tả mối quan hệ giữa các biến đầu vào và đầu ra. Hơn nữa, nó hữu dụng hơn khi mục tiêu dự báo quan trọng hơn giải thích... Phương pháp đã kết hợp quan hệ phi tuyến và sự phụ thuộc giữa các biến.\""
+  },
+  {
+    ch: 4,
+    q: "Theo khuyến nghị của Ủy ban Basel (BCBS) tại slide 19, mục tiêu cốt lõi của việc đưa ra phương pháp xếp hạng nội bộ (IRB) là gì?",
+    opts: [
+      "Cố gắng tạo nên một khung phân tích tốt hơn đối với sự điều chỉnh vốn của ngân hàng.",
+      "Khuyến khích các ngân hàng từ bỏ hoàn toàn việc trích lập dự phòng rủi ro cụ thể.",
+      "Buộc các ngân hàng thương mại phải công khai toàn bộ bí mật kinh doanh và số liệu nội bộ.",
+      "Định giá thống nhất một mức lãi suất cho vay duy nhất cho toàn bộ thị trường liên ngân hàng."
+    ],
+    correct: 0,
+    exp: "Slide 19 viết: \"Hệ thống xếp hạng nội bộ – còn được biết đến là phương pháp xếp hạng nội bộ (IRB) được đưa ra bởi BCBS, mục tiêu của việc đưa ra phương pháp này, theo BIS (2006a), BCBS cố gắng tạo nên một khung phân tích tốt hơn đối với sự điều chỉnh vốn của ngân hàng.\""
+  },
+  {
+    ch: 4,
+    q: "Sự khác biệt cốt lõi giữa phương pháp IRB cơ bản (F-IRB) và IRB nâng cao (A-IRB) về mặt ước lượng các cấu phần rủi ro theo quy định ở slide 20 là gì?",
+    opts: [
+      "F-IRB: Ngân hàng tự ước lượng PD, dựa vào cơ quan giám sát cho các thành phần còn lại; A-IRB: Ngân hàng tự ước lượng tất cả các thành phần PD, LGD, EAD, M.",
+      "F-IRB: Ngân hàng tự ước lượng tất cả các cấu phần; A-IRB: Ngân hàng sử dụng hoàn toàn ước lượng của cơ quan giám sát quốc gia.",
+      "F-IRB: Ngân hàng chỉ cần xếp hạng khách hàng doanh nghiệp; A-IRB: Ngân hàng áp dụng bắt buộc cho cả khách hàng cá nhân.",
+      "F-IRB: Áp dụng đối với các vị thế hạch toán ngoại bảng; A-IRB: Áp dụng độc quyền đối với các vị thế hạch toán nội bảng."
+    ],
+    correct: 0,
+    exp: "Slide 20 ghi nhận rõ: \"Nếu sử dụng phương pháp IRB cơ bản, các ngân hàng tự ước lượng PD và dựa trên ước lượng của cơ quan giám sát về các thành phần rủi ro còn lại. Nếu sử dụng phương pháp IRB nâng cao, ngân hàng sẽ phải tự ước lượng tất cả các thành phần rủi ro như PD, LGD, EAD và M...\""
+  },
+  {
+    ch: 4,
+    q: "Hệ thống xếp hạng nội bộ của một ngân hàng thương mại muốn đưa vào sử dụng dựa trên phương pháp IRB bắt buộc phải đạt điều kiện phê chuẩn nào theo slide 20?",
+    opts: [
+      "Phải được cơ quan giám sát phê chuẩn; tuy nhiên trước đó phải được phê chuẩn bởi chính ngân hàng.",
+      "Chỉ cần ban kiểm soát nội bộ chi nhánh cấp 1 phê duyệt và gửi thông báo báo cáo lên Ủy ban ALCO.",
+      "Phải được kiểm toán hoàn toàn bởi một trong các tổ chức kiểm toán độc lập lớn nhất thế giới.",
+      "Phải hạch toán toàn bộ chênh lệch đánh giá lại tài sản bảo đảm vào bảng tổng kết tài sản kế toán."
+    ],
+    correct: 0,
+    exp: "Dòng cuối của slide 20 chỉ rõ: \"Hệ thống xếp hạng nội bộ của ngân hàng phải được cơ quan giám sát phê chuẩn. Tuy nhiên, trước khi được sự phê chuẩn bởi cơ quan giám sát, hệ thống xếp hạng nội bộ phải được phê chuẩn bởi chính ngân hàng.\""
+  },
+  {
+    ch: 4,
+    q: "Mô hình cấu trúc rủi ro tín dụng của Merton (1974) đối với doanh nghiệp đại chúng được xây dựng dựa trên nguyên tắc căn bản của mô hình định giá nào theo slide 21?",
+    opts: [
+      "Mô hình định giá quyền chọn Black & Scholes.",
+      "Mô hình định giá tài sản vốn CAPM.",
+      "Lý thuyết danh mục đầu tư hiện đại Markowitz.",
+      "Mô hình tăng trưởng cổ tức Gordon."
+    ],
+    correct: 0,
+    exp: "Slide 21 ghi rõ: \"Mô hình cấu trúc rủi ro tín dụng được Merton đưa ra dựa trên những nguyên tắc căn bản của mô hình định giá quyền chọn Black & Scholes.\""
+  },
+  {
+    ch: 4,
+    q: "Mô hình Merton giả định một cấu trúc vốn đơn giản của doanh nghiệp, bao gồm các thành phần cụ thể nào theo slide 22?",
+    opts: [
+      "Vốn cổ phần và các khoản nợ là các trái phiếu chiết khấu có mệnh giá $K$ chỉ thanh toán một lần duy nhất vào thời điểm đáo hạn $T$.",
+      "Vốn cổ phần, nợ vay ngân hàng ngắn hạn lãi suất thả nổi và cổ phiếu ưu đãi có cam kết chi trả cổ tức.",
+      "Trái phiếu chuyển đổi dài hạn và các khoản phải trả người bán ngắn hạn chịu lãi suất phạt phạt quá hạn.",
+      "Chỉ gồm nguồn vốn góp ban đầu của các cổ đông sáng lập và hoàn toàn không phát sinh nợ phải trả."
+    ],
+    correct: 0,
+    exp: "Slide 22 viết: \"Mô hình Merton giả định một DN có cấu trúc vốn đơn giản, gồm vốn cổ phần và các khoản nợ là các trái phiếu chiết khấu có mệnh giá K chỉ thanh toán một lần duy nhất vào thời điểm đáo hạn T.\""
+  },
+  {
+    ch: 4,
+    q: "Theo slide 23, thu nhập của chủ nợ trái phiếu ($P(T,T)$) và cổ đông doanh nghiệp ($S_T$) tại thời điểm đáo hạn $T$ trong mô hình Merton được xác định tương ứng như thế nào?",
+    opts: [
+      "$P(T,T) = \\min(K, V_T) = K - \\max(K - V_T, 0)$ và $S_T = \\max(V_T - K, 0)$",
+      "$P(T,T) = \\max(K, V_T)$ và $S_T = \\min(V_T - K, 0)$",
+      "$P(T,T) = V_T - K$ và $S_T = K - \\max(K - V_T, 0)$",
+      "$P(T,T) = \\min(K, V_T)$ và $S_T = V_T + K$"
+    ],
+    correct: 0,
+    exp: "Slide 23 xác định thu nhập tại đáo hạn T: $P(T,T) = \\min(K, V_T) = K - \\max(K - V_T, 0)$ và $S_T = \\max(V_T - K, 0)$."
+  },
+  {
+    ch: 4,
+    q: "Trong mô hình định giá quyền chọn của Black - Scholes của KMV, các cổ đông của doanh nghiệp được xem như đang nắm giữ quyền chọn gì đối với tài sản của công ty theo slide 24?",
+    opts: [
+      "Quyền chọn mua (Call Option) đối với tài sản của công ty với giá thực hiện bằng mệnh giá khoản nợ.",
+      "Quyền chọn bán (Put Option) đối với cổ phiếu của chính doanh nghiệp đối thủ cạnh tranh trên thị trường.",
+      "Hợp đồng kỳ hạn phòng ngừa rủi ro tỷ giá cho các khoản nợ phải trả bằng ngoại tệ.",
+      "Trái phiếu chiết khấu phi rủi ro được bảo lãnh thanh toán hoàn toàn bởi ngân hàng liên kết."
+    ],
+    correct: 0,
+    exp: "Slide 24 chỉ rõ: \"Trong mô hình định giá quyền chọn của Black - Scholes của KMV, các cổ đông của DN được xem như đang nắm giữ một quyền chọn mua đối với tài sản của công ty.\""
+  },
+  {
+    ch: 4,
+    q: "Trong mô hình KMV, thế nào là xác suất không trả nợ (EDF) và khả năng vỡ nợ của doanh nghiệp liên hệ thế nào với khoảng cách vỡ nợ (DD) theo slide 24?",
+    opts: [
+      "EDF là xác suất giá trị tài sản rơi xuống dưới điểm vỡ nợ; Khoảng cách vỡ nợ DD càng lớn thì khả năng vỡ nợ càng thấp.",
+      "EDF là tỷ trọng nợ xấu nhóm 3-5 trên tổng dư nợ; Khoảng cách vỡ nợ DD càng lớn thì khả năng vỡ nợ càng cao.",
+      "EDF là xác suất cơ quan giám sát từ chối phê duyệt IRB; Khoảng cách vỡ nợ DD không liên quan đến khả năng vỡ nợ.",
+      "EDF là mức tổn thất tối đa của danh mục ở mức tin cậy 99%; Khoảng cách vỡ nợ DD là một hằng số cố định."
+    ],
+    correct: 0,
+    exp: "Slide 24 chỉ rõ: \"xác suất không trả nợ (EDF) là xác suất giá trị tài sản DN rơi xuống dưới điểm vỡ nợ (nằm trong vùng tối)... Nếu khoảng cách vỡ nợ càng lớn thì khả năng vỡ nợ của DN càng thấp và ngược lại.\""
+  },
+  {
+    ch: 4,
+    q: "Biến số nào dưới đây KHÔNG nằm trong nhóm các biến số chính xác định rủi ro vỡ nợ của một doanh nghiệp theo mô hình EDF của Glantz & Morton (2003) tại slide 25?",
+    opts: [
+      "Hệ số an toàn vốn tối thiểu CAR và quy mô vốn tự có của ngân hàng cho vay.",
+      "Giá trị tài sản hiện tại và phân phối của giá trị tài sản tại thời điểm tương lai.",
+      "Độ biến động của giá trị tương lai của tài sản và điểm vỡ nợ (giá trị sổ sách của các khoản nợ).",
+      "Tốc độ tăng trưởng kỳ vọng của giá trị tài sản và thời điểm tương lai $H$."
+    ],
+    correct: 0,
+    exp: "Slide 25 liệt kê 6 biến số chính xác định rủi ro vỡ nợ bao gồm: (1) Giá trị tài sản hiện tại, (2) Phân phối của giá trị tài sản tại thời điểm H, (3) Độ biến động của giá trị tương lai của tài sản tại thời điểm H, (4) Điểm vỡ nợ, giá trị sổ sách của các khoản nợ, (5) Tốc độ tăng trưởng kỳ vọng của giá trị tài sản trong thời gian H, (6) Thời điểm tương lai H. Hệ số CAR của ngân hàng không thuộc nhóm này."
+  },
+  {
+    ch: 4,
+    q: "Khi đo lường rủi ro danh mục (slide 26), việc đánh giá bằng cách tiếp cận định tính được ngân hàng thực hiện thông qua hoạt động nào?",
+    opts: [
+      "Đánh giá mức độ rủi ro tín dụng thông qua phân tích rủi ro tập trung (concentration risk).",
+      "Sử dụng các mô hình định lượng rủi ro danh mục để tính toán giá trị tổn thất kinh tế thực tế.",
+      "Thiết lập hạn mức trạng thái hối đoái NOP tối đa cho từng loại ngoại tệ dựa trên vốn tự có.",
+      "Áp dụng hàm trọng số rủi ro của cơ quan giám sát để xác định yêu cầu về vốn bắt buộc tối thiểu."
+    ],
+    correct: 0,
+    exp: "Slide 26 viết rõ: \"Với cách tiếp cận định tính, các ngân hàng sẽ đánh giá mức độ rủi ro tín dụng thông qua phân tích rủi ro tập trung.\""
   }
 ];
 
 const CHAPTER_TITLES = {
   1: "Chương 1: Tổng quan về Quản trị rủi ro",
-  2: "Chương 2: Quản lý rủi ro thị trường"
+  2: "Chương 2: Quản lý rủi ro thị trường",
+  3: "Chương 3: Nhận biết rủi ro tín dụng",
+  4: "Chương 4: Đo lường rủi ro tín dụng"
 };
 
 function chapterTitle(n) { return CHAPTER_TITLES[n] || `Chương ${n}`; }
@@ -1354,7 +1899,7 @@ function updateMaxQuestions() {
     const prevVal = parseInt(limitOpt.value);
     limitOpt.max = totalAvailable;
     if (!prevVal || prevVal > totalAvailable || prevVal <= 0) {
-      limitOpt.value = Math.min(20, totalAvailable);
+      limitOpt.value = Math.min(25, totalAvailable);
     }
     maxText.textContent = `(Tối đa: ${totalAvailable} câu)`;
   }
@@ -1403,13 +1948,8 @@ document.getElementById('start-btn').addEventListener('click', () => {
   
   // Tạo bản sao sâu (deep copy) để tránh ghi đè dữ liệu gốc QUESTIONS
   let clonedPool = pool.map(item => {
-    // Lưu lại chuỗi text đáp án đúng ban đầu trước khi xáo trộn
     const originalCorrectText = item.opts[item.correct];
-    
-    // Tạo bản sao và xáo trộn mảng phương án chọn lựa
     let shuffledOpts = shuffleArray([...item.opts]);
-    
-    // Tìm lại chỉ mục (index) mới của câu trả lời đúng sau khi xáo trộn
     let newCorrectIndex = shuffledOpts.indexOf(originalCorrectText);
     
     return {
