@@ -1294,7 +1294,7 @@ const QUESTIONS = [
       "Không thực hiện bất kỳ hành động nào vì Gap dương luôn mang lại lợi ích chắc chắn khi lãi suất giảm sâu."
     ],
     correct: 0,
-    exp: "Slide 31 ghi rõ: Khi $GAP > 0$, nếu lãi suất giảm thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn tài sản/rút ngắn kỳ hạn nguồn vốn, (2) Tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất."
+    exp: "Slide 31 ghi rõ: When $GAP > 0$, nếu lãi suất giảm thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn tài sản/rút ngắn kỳ hạn nguồn vốn, (2) Tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất."
   },
   {
     ch: 2,
@@ -1306,7 +1306,7 @@ const QUESTIONS = [
       "Không cần thiết lập các chiến lược do Gap âm luôn mang lại thặng dư lợi nhuận NII lớn khi lãi suất tăng."
     ],
     correct: 0,
-    exp: "Slide 31 ghi rõ: Khi $GAP < 0$, nếu lãi suất tăng thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn nguồn vốn/rút ngắn kỳ hạn tài sản, (2) Giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất."
+    exp: "Slide 31 ghi rõ: When $GAP < 0$, nếu lãi suất tăng thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn nguồn vốn/rút ngắn kỳ hạn tài sản, (2) Giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất."
   }
 ];
 
@@ -1384,6 +1384,15 @@ function renderChips() {
 }
 renderChips();
 
+// Hàm xáo trộn mảng thuật toán Fisher-Yates
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
 document.getElementById('start-btn').addEventListener('click', () => {
   if (selectedChapters.size === 0) {
     document.getElementById('picker-warning').style.display = 'block';
@@ -1392,15 +1401,33 @@ document.getElementById('start-btn').addEventListener('click', () => {
   
   let pool = QUESTIONS.filter(q => selectedChapters.has(q.ch));
   
+  // Tạo bản sao sâu (deep copy) để tránh ghi đè dữ liệu gốc QUESTIONS
+  let clonedPool = pool.map(item => {
+    // Lưu lại chuỗi text đáp án đúng ban đầu trước khi xáo trộn
+    const originalCorrectText = item.opts[item.correct];
+    
+    // Tạo bản sao và xáo trộn mảng phương án chọn lựa
+    let shuffledOpts = shuffleArray([...item.opts]);
+    
+    // Tìm lại chỉ mục (index) mới của câu trả lời đúng sau khi xáo trộn
+    let newCorrectIndex = shuffledOpts.indexOf(originalCorrectText);
+    
+    return {
+      ch: item.ch,
+      q: item.q,
+      opts: shuffledOpts,
+      correct: newCorrectIndex,
+      exp: item.exp
+    };
+  });
+  
+  // Xáo trộn thứ tự câu hỏi nếu người dùng bật checkbox
   if (document.getElementById('shuffle-opt').checked) {
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
+    clonedPool = shuffleArray(clonedPool);
   }
   
   let limitVal = parseInt(document.getElementById('limit-opt').value);
-  const totalAvailable = pool.length;
+  const totalAvailable = clonedPool.length;
   if (isNaN(limitVal) || limitVal <= 0) {
     limitVal = totalAvailable;
   } else if (limitVal > totalAvailable) {
@@ -1408,7 +1435,7 @@ document.getElementById('start-btn').addEventListener('click', () => {
   }
   document.getElementById('limit-opt').value = limitVal;
   
-  activeQuestions = pool.slice(0, limitVal);
+  activeQuestions = clonedPool.slice(0, limitVal);
   current = 0;
   answers = new Array(activeQuestions.length).fill(null);
   
@@ -1421,7 +1448,7 @@ function renderQuestion() {
   const q = activeQuestions[current];
   document.getElementById('progress-text').textContent = `Câu ${current+1} / ${activeQuestions.length}`;
   const correctSoFar = answers.filter((a,i)=> a!==null && a===activeQuestions[i].correct).length;
-  document.getElementById('score-text').textContent = `Đúng: ${correctSoFar}`;
+  document.getElementById('score-text').textContent = `Đúng: 0${correctSoFar}`.slice(-2); // Đồng bộ 2 chữ số
   document.getElementById('progress-fill').style.width = `${((current)/activeQuestions.length)*100}%`;
 
   document.getElementById('q-tag').textContent = chapterTitle(q.ch).toUpperCase();
@@ -1557,7 +1584,20 @@ document.getElementById('retry-failed-btn').addEventListener('click', () => {
   const failed = activeQuestions.filter((q, i) => answers[i] !== q.correct);
   if (failed.length === 0) return;
 
-  activeQuestions = failed;
+  // Khi luyện lại câu sai, chúng ta tiếp tục xáo trộn lại đáp án của các câu sai đó
+  activeQuestions = failed.map(item => {
+    const originalCorrectText = item.opts[item.correct];
+    let shuffledOpts = shuffleArray([...item.opts]);
+    let newCorrectIndex = shuffledOpts.indexOf(originalCorrectText);
+    return {
+      ch: item.ch,
+      q: item.q,
+      opts: shuffledOpts,
+      correct: newCorrectIndex,
+      exp: item.exp
+    };
+  });
+  
   current = 0;
   answers = new Array(activeQuestions.length).fill(null);
 
