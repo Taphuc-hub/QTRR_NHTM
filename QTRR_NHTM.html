@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn tập QTRR Ngân hàng - HUB</title>
+<!-- KaTeX để hiển thị LaTeX trực quan và đẹp mắt -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+<style>
+  :root {
+    --hub-blue: #0A3B75;
+    --hub-blue-dark: #062852;
+    --hub-red: #A31D1D;
+    --hub-gold: #D4AF37;
+    --cream: #FAF9F6;
+    --paper: #FFFFFF;
+    --ink: #1F2937;
+    --green: #15803D;
+    --red: #B91C1C;
+    --line: #E5E7EB;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: 
+      radial-gradient(rgba(10, 59, 117, 0.03) 1px, transparent 1px),
+      radial-gradient(rgba(163, 29, 29, 0.02) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+  }
+  .wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+  header.top {
+    text-align: center;
+    border-bottom: 3px double var(--hub-blue);
+    padding-bottom: 18px;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: monospace;
+    letter-spacing: 2px;
+    font-size: 11px;
+    color: var(--hub-red);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  h1 {
+    font-size: 24px;
+    margin: 8px 0 4px;
+    color: var(--hub-blue);
+    font-weight: 800;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .subtitle {
+    font-size: 13.5px;
+    color: #4B5563;
+    margin-top: 4px;
+  }
+  .stamp {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    width: 65px;
+    height: 65px;
+    border: 2px dashed var(--hub-red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(15deg);
+    opacity: 0.8;
+    font-family: monospace;
+    font-size: 9px;
+    color: var(--hub-red);
+    text-align: center;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+  .meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--hub-blue);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .progress-track {
+    height: 8px;
+    background: var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--hub-blue), var(--hub-red));
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+  .tag {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--hub-blue);
+    color: var(--hub-blue);
+    background-color: rgba(10, 59, 117, 0.05);
+    border-radius: 4px;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--hub-blue);
+    border-radius: 8px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+  .qnum {
+    font-family: monospace;
+    color: var(--hub-red);
+    font-size: 13px;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  .qtext {
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--hub-blue-dark);
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .opt {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    cursor: pointer;
+    background: #FFF;
+    transition: all 0.2s ease;
+    font-size: 14.5px;
+    line-height: 1.45;
+  }
+  .opt:hover { 
+    border-color: var(--hub-blue); 
+    background: rgba(10, 59, 117, 0.02);
+    transform: translateY(-1px);
+  }
+  .opt.selected { 
+    border-color: var(--hub-blue); 
+    background: rgba(10, 59, 117, 0.08); 
+    font-weight: 600;
+  }
+  .opt.correct { 
+    border-color: var(--green); 
+    background: #F0FDF4; 
+    color: #14532D; 
+    font-weight: 600;
+  }
+  .opt.wrong { 
+    border-color: var(--red); 
+    background: #FEF2F2; 
+    color: #7F1D1D; 
+  }
+  .opt .lab {
+    font-family: monospace;
+    font-weight: 700;
+    color: var(--hub-red);
+    min-width: 20px;
+  }
+  .opt.correct .lab { color: var(--green); }
+  .opt.wrong .lab { color: var(--red); }
+  
+  .explain {
+    margin-top: 20px;
+    padding: 16px;
+    background: #F8FAFC;
+    border-left: 4px solid var(--hub-gold);
+    border-radius: 0 6px 6px 0;
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #334155;
+    display: none;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+  }
+  .explain.show { display: block; }
+  .explain strong { color: var(--hub-blue); }
+
+  .nav-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 12px;
+  }
+  button {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 1px solid var(--hub-blue);
+    background: var(--hub-blue);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  button:hover {
+    background: var(--hub-blue-dark);
+  }
+  button:disabled { 
+    opacity: 0.35; 
+    cursor: not-allowed; 
+  }
+  button.ghost {
+    background: transparent;
+    color: var(--hub-blue);
+  }
+  button.ghost:hover {
+    background: rgba(10, 59, 117, 0.05);
+  }
+  
+  .results {
+    text-align: center;
+  }
+  .seal {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 4px double var(--hub-gold);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 15px auto 25px;
+    transform: rotate(-5deg);
+    background-color: #FFFDF5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .seal .score {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--hub-blue);
+  }
+  .seal .label {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--hub-red);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: -2px;
+  }
+  .breakdown {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .bd-item {
+    border: 1px solid var(--line);
+    background: #fff;
+    padding: 14px;
+    border-radius: 6px;
+    min-width: 220px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+  }
+  .bd-item .n { font-size: 20px; font-weight: 700; color: var(--hub-blue); }
+  .bd-item .l { font-size: 11px; color: #6B7280; margin-top: 4px; line-height: 1.3; }
+  
+  .review-list {
+    text-align: left;
+    margin-top: 30px;
+  }
+  .review-item {
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    margin-bottom: 12px;
+    background: #FFF;
+  }
+  .review-item.correct { border-left: 4px solid var(--green); }
+  .review-item.wrong { border-left: 4px solid var(--red); }
+  .review-item .rq { font-weight: 700; color: var(--hub-blue-dark); margin-bottom: 8px; font-size: 14.5px; line-height: 1.5; }
+  .icon { font-weight: 700; margin-right: 6px; }
+  .review-item.correct .icon { color: var(--green); }
+  .review-item.wrong .icon { color: var(--red); }
+  
+  .startbtn-wrap { text-align: center; margin-top: 24px; display: flex; gap: 12px; justify-content: center; }
+  .intro {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px;
+    font-size: 15px;
+    line-height: 1.65;
+    color: #374151;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  }
+  .intro b { color: var(--hub-blue); }
+  .chapter-picker {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+  .chapter-picker .cp-title {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--hub-red);
+    margin-bottom: 14px;
+    font-weight: 700;
+  }
+  .chip-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4B5563;
+    transition: all 0.15s;
+    user-select: none;
+  }
+  .chip:hover { border-color: var(--hub-blue); background: #F9FAFB; }
+  .chip.active {
+    border-color: var(--hub-blue);
+    background: rgba(10, 59, 117, 0.05);
+    color: var(--hub-blue-dark);
+    font-weight: 600;
+  }
+  .chip .box {
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--hub-blue);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+    color: transparent;
+  }
+  .chip.active .box { 
+    background: var(--hub-blue); 
+    border-color: var(--hub-blue); 
+    color: #FFF;
+  }
+  .chip .count {
+    font-family: monospace;
+    font-size: 12px;
+    opacity: 0.7;
+    margin-left: auto;
+  }
+  .settings-panel {
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+  .settings-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 12px;
+    align-items: center;
+  }
+  .setting-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #374151;
+    user-select: none;
+  }
+  .setting-item input[type="checkbox"] {
+    accent-color: var(--hub-blue);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+  }
+  .setting-item input[type="number"] {
+    width: 80px;
+    padding: 6px 10px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--hub-blue);
+  }
+  .picker-warning {
+    font-size: 13px;
+    color: var(--red);
+    margin-top: 10px;
+    display: none;
+    font-weight: 600;
+  }
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-family: monospace;
+    font-size: 11px;
+    color: #9CA3AF;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="eyebrow">Trường Đại học Ngân hàng TP.HCM · HUB</div>
+    <h1>Quản trị rủi ro ngân hàng</h1>
+    <div class="subtitle" id="main-subtitle">Hệ thống ôn luyện trắc nghiệm chuyên sâu (Giảng viên: PGS. TS. Lê Hoàng Anh)</div>
+    <div class="stamp">HUB<br>CAR 8%<br>BASEL</div>
+  </header>
+
+  <div id="intro-screen">
+    <div class="intro">
+      <p>Chào mừng bạn đến với hệ thống ôn luyện học trình <b>Quản trị rủi ro ngân hàng</b>, thiết kế chuyên sâu dành riêng cho sinh viên HUB.</p>
+      <p>Nội dung câu hỏi bám sát slide bài giảng của <b>PGS. TS. Lê Hoàng Anh</b> và <b>ThS. Trần Kim Long</b>, hỗ trợ đầy đủ ký hiệu toán học qua KaTeX.</p>
+
+      <div class="chapter-picker">
+        <div class="cp-title">Nội dung ôn tập chính</div>
+        <div class="chip-row" id="chip-row"></div>
+        
+        <div class="settings-panel">
+          <div class="cp-title">Cấu hình buổi ôn luyện</div>
+          <div class="settings-row">
+            <label class="setting-item">
+              <input type="checkbox" id="shuffle-opt" checked>
+              <span>Xáo trộn thứ tự câu hỏi</span>
+            </label>
+            <div class="setting-item">
+              <span>Số lượng câu hỏi:</span>
+              <input type="number" id="limit-opt" min="1" value="20">
+              <span id="max-limit-text" style="opacity: 0.75; font-family: monospace; font-size:12px;"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="picker-warning" id="picker-warning">Vui lòng chọn ít nhất một nội dung để bắt đầu ôn tập.</div>
+      </div>
+    </div>
+    <div class="startbtn-wrap">
+      <button id="start-btn">Bắt đầu làm bài →</button>
+    </div>
+  </div>
+
+  <div id="quiz-screen" style="display:none;">
+    <div class="meta-row">
+      <span id="progress-text">Câu 1 / 20</span>
+      <span id="score-text">Đúng: 0</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+
+    <div class="card">
+      <div class="tag" id="q-tag">CHƯƠNG 1</div>
+      <div class="qnum" id="q-num">Câu 1</div>
+      <div class="qtext" id="q-text"></div>
+      <div class="options" id="q-options"></div>
+      <div class="explain" id="q-explain"></div>
+    </div>
+
+    <div class="nav-row">
+      <button class="ghost" id="prev-btn">← Câu trước</button>
+      <button id="next-btn" disabled>Câu tiếp theo →</button>
+    </div>
+  </div>
+
+  <div id="result-screen" style="display:none;">
+    <div class="results">
+      <div class="tag">BÁO CÁO KẾT QUẢ ÔN TẬP</div>
+      <div class="seal">
+        <div class="score" id="final-score">0/0</div>
+        <div class="label">Đạt được</div>
+      </div>
+      <div id="final-message" style="font-size:16px;color:var(--hub-blue-dark);font-weight:700;margin-bottom:12px; padding: 0 10px;"></div>
+      <div class="breakdown" id="breakdown"></div>
+      <div class="startbtn-wrap" style="flex-wrap: wrap;">
+        <button id="review-btn" class="ghost">Xem lại chi tiết lỗi sai</button>
+        <button id="retry-failed-btn" style="background: var(--hub-red); border-color: var(--hub-red); color: #fff; display: none;">Làm lại các câu sai →</button>
+        <button id="restart-btn">Quay lại cấu hình gốc</button>
+      </div>
+      <div class="review-list" id="review-list" style="display:none;"></div>
+    </div>
+  </div>
+
+  <footer>Học liệu phục vụ kỳ thi kết thúc học phần HUB môn Quản trị Rủi ro Ngân hàng<br>© Slide gốc biên soạn bởi PGS. TS. Lê Hoàng Anh - Bộ môn Quản trị rủi ro</footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  // ==================== CHƯƠNG 1 ====================
+  {
+    ch: 1,
+    q: "Theo định nghĩa của Association for Project Management (1997), rủi ro là:",
+    opts: [
+      "Tính ngẫu nhiên trong kết quả của các dự án, bao gồm cả tốt và xấu.",
+      "Khả năng xảy ra tổn thất, tổn thương hoặc các ảnh hưởng bất lợi trong các sự kiện không mong đợi.",
+      "Sự biến động của lợi nhuận của danh mục đầu tư.",
+      "Sự biến đổi ngẫu nhiên của các biến số kinh tế vĩ mô có xác suất cho trước."
+    ],
+    correct: 0,
+    exp: "Slide 7 trích nguyên văn: \"Rủi ro là tính ngẫu nhiên trong kết quả của các dự án, bao gồm cả tốt và xấu...\" (Association for Project Management, 1997)."
+  },
+  {
+    ch: 1,
+    q: "Định nghĩa rủi ro là \"sự biến động của lợi nhuận của danh mục đầu tư\" được slide 7 trích dẫn từ tác giả nào?",
+    opts: [
+      "Guerard (2010).",
+      "Bessis (2015).",
+      "Altman (1968).",
+      "Magellan (1519)."
+    ],
+    correct: 0,
+    exp: "Theo slide 7, định nghĩa \"Rủi ro là sự biến động của lợi nhuận của danh mục đầu tư\" là của tác giả Guerard (2010)."
+  },
+  {
+    ch: 1,
+    q: "Sự khác biệt cốt lõi nhất về mặt xác suất giữa Rủi ro (Risk) và Sự không chắc chắn (Uncertainty) là gì?",
+    opts: [
+      "Rủi ro liên quan đến xác suất đã biết và có thể đo lường; Sự không chắc chắn bao gồm các xác suất không biết.",
+      "Rủi ro có xác suất không thể đo lường; Sự không chắc chắn có xác suất khách quan đo lường được.",
+      "Cả hai đều không có xác suất xác định nhưng rủi ro dẫn đến hậu quả nghiêm trọng hơn.",
+      "Rủi ro chỉ có kết quả tích cực; Sự không chắc chắn chỉ đem lại tổn thất và tai họa."
+    ],
+    correct: 0,
+    exp: "Khía cạnh 1 trong bảng so sánh ở slide 8 chỉ rõ: Rủi ro liên quan đến xác suất đã biết và có thể đo lường, trong khi sự không chắc chắn bao gồm các xác suất không biết và kết quả không thể dự đoán được."
+  },
+  {
+    ch: 1,
+    q: "Khi so sánh khả năng quản trị và giảm thiểu giữa Rủi ro và Sự không chắc chắn, rút ra nhận định nào?",
+    opts: [
+      "Rủi ro có thể quản lý và giảm nhẹ qua các chiến lược quản lý; Sự không chắc chắn không thể quản lý hoàn toàn hoặc loại bỏ.",
+      "Sự không chắc chắn dễ dàng bị triệt tiêu hoàn toàn nhờ công nghệ; Rủi ro thì không thể.",
+      "Cả hai đều có thể bị loại bỏ 100% nếu ngân hàng có đủ vốn tự có dồi dào.",
+      "Không thể giảm nhẹ rủi ro nhưng có thể phòng ngừa tuyệt đối sự không chắc chắn."
+    ],
+    correct: 0,
+    exp: "Khía cạnh số 6 ở slide 8 ghi rõ: Rủi ro có thể quản lý và giảm nhẹ thông qua các chiến lược quản lý rủi ro; Sự không chắc chắn không thể quản lý hoàn toàn hoặc loại bỏ."
+  },
+  {
+    ch: 1,
+    q: "Về mặt thông tin và sự mơ hồ, mối liên hệ tương ứng được thiết lập tại khía cạnh số 9 là:",
+    opts: [
+      "Rủi ro liên quan đến các mất mát hoặc lợi ích tiềm năng; Sự không chắc chắn liên quan đến sự mơ hồ và thông tin hạn chế.",
+      "Rủi ro phát sinh hoàn toàn do thiếu thông tin; Sự không chắc chắn phát sinh khi có quá nhiều thông tin rõ ràng.",
+      "Cả hai đều độc lập với mức độ sẵn có của thông tin trên thị trường liên ngân hàng.",
+      "Thông tin hạn chế giúp giảm thiểu rủi ro nhưng làm gia tăng mức độ không chắc chắn."
+    ],
+    correct: 0,
+    exp: "Khía cạnh 9 (slide 8) thể hiện: Rủi ro liên quan đến các mất mát hoặc lợi ích tiềm năng, còn Sự không chắc chắn liên quan đến sự mơ hồ và thông tin hạn chế."
+  },
+  {
+    ch: 1,
+    q: "Biểu đồ Venn mô tả mối quan hệ giữa Rủi ro (Risk) và Sự không chắc chắn (Uncertainty)chỉ ra rằng:",
+    opts: [
+      "Rủi ro là một phần nhỏ (tập hợp con) nằm hoàn toàn trong lòng của Sự không chắc chắn.",
+      "Sự không chắc chắn là một phần nhỏ nằm trong lòng Rủi ro.",
+      "Hai khái niệm này tách biệt nhau hoàn toàn và không có bất kỳ điểm giao nhau nào.",
+      "Khái niệm Rủi ro bao trùm và rộng lớn hơn nhiều so với khái niệm Sự không chắc chắn."
+    ],
+    correct: 0,
+    exp: "Slide 9 thể hiện vòng tròn màu xanh lá cây đại diện cho \"Uncertainty\" (Sự bất định) bao bọc hoàn toàn vòng tròn nhỏ màu hồng bên trong đại diện cho \"Risk\" (Rủi ro). Điều này nghĩa là rủi ro là vùng bất định đã được nhận diện và đo lường."
+  },
+  {
+    ch: 1,
+    q: "Hoạt động cho vay khách hàng của ngân hàng (Bán lẻ, Thương mại, Thế chấp, Hợp vốn) phát sinh hai loại rủi ro chủ yếu nào?",
+    opts: [
+      "Rủi ro Tín dụng và Rủi ro Thị trường.",
+      "Rủi ro Tín dụng và Rủi ro Vận hành.",
+      "Rủi ro Thanh khoản và Rủi ro Hệ thống.",
+      "Rủi ro Pháp lý và Rủi ro Khả năng thanh toán."
+    ],
+    correct: 0,
+    exp: "Theo bảng phân loại hoạt động ở slide 13, hoạt động 'Cho vay' mang lại doanh thu thu nhập lãi/phí và phải đối mặt chủ yếu với rủi ro 'Tín dụng, thị trường'."
+  },
+  {
+    ch: 1,
+    q: "Hoạt động cung cấp dịch vụ \"Quản lý tiền mặt\" (Xử lý giao dịch, Thanh toán) của ngân hàng đối mặt chủ yếu với loại rủi ro nào?",
+    opts: [
+      "Rủi ro Vận hành (Vận hành) và rủi ro Tín dụng.",
+      "Rủi ro Thị trường và rủi ro Thanh khoản.",
+      "Rủi ro Vốn và rủi ro Tỷ giá.",
+      "Chỉ đối mặt duy nhất với rủi ro Lãi suất."
+    ],
+    correct: 0,
+    exp: "Slide 13 chỉ rõ: Hoạt động 'Xử lý giao dịch' có rủi ro là 'Vận hành'; Hoạt động 'Thanh toán' thu phí và chịu rủi ro 'Tín dụng, vận hành'."
+  },
+  {
+    ch: 1,
+    q: "Tổng cộng có bao nhiêu loại rủi ro chính trong hoạt động ngân hàng?",
+    opts: [
+      "5 loại rủi ro chính (Tín dụng, Thị trường, Hoạt động, Thanh khoản, Khả năng thanh toán/Vốn).",
+      "4 loại rủi ro chính (Tín dụng, Lãi suất, Tỷ giá, Pháp lý).",
+      "6 loại rủi ro chính (Tín dụng, Thị trường, Vận hành, Thanh khoản, Danh tiếng, Quốc gia).",
+      "3 loại rủi ro chính (Tín dụng, Thị trường, Vận hành) theo quy định của Basel I."
+    ],
+    correct: 0,
+    exp: "Slide 14 phân loại rõ 5 nhóm rủi ro: (1) Rủi ro tín dụng, (2) Rủi ro thị trường, (3) Rủi ro hoạt động, (4) Rủi ro thanh khoản, (5) Rủi ro khả năng thanh toán/Vốn."
+  },
+  {
+    ch: 1,
+    q: "Loại rủi ro tín dụng nào tồn tại khi cả hai bên của một giao dịch song phương đều có nguy cơ bị tổn thất nếu đối tác của mình mất khả năng thanh toán?",
+    opts: [
+      "Rủi ro đối tác (Counterparty risk).",
+      "Rủi ro vỡ nợ gốc (Default risk).",
+      "Rủi ro thu hồi nợ (Recovery risk).",
+      "Rủi ro suy giảm chất lượng tín dụng (Credit migration risk)."
+    ],
+    correct: 0,
+    exp: "Slide 16 ghi rõ: \"Rủi ro đối tác (counter party risk) tồn tại khi cả hai bên của một giao dịch có thể chịu rủi ro khi bên còn lại mất khả năng thanh toán.\""
+  },
+  {
+    ch: 1,
+    q: "Định nghĩa: \"Sự không chắc chắn đối với giá trị thu hồi từ người vay trong trường hợp vỡ nợ\" mô tả chính xác cho thuật ngữ nào?",
+    opts: [
+      "Rủi ro thu hồi (Recovery risk).",
+      "Rủi ro vỡ nợ (Default risk).",
+      "Rủi ro đối tác (Counterparty risk).",
+      "Rủi ro suy giảm xếp hạng tín nhiệm."
+    ],
+    correct: 0,
+    exp: "Slide 16 định nghĩa: \"Rủi ro thu hồi (recovery risk) đề cập đến sự không chắc chắn đối với giá trị thu hồi từ người vay trong trường hợp vỡ nợ.\""
+  },
+  {
+    ch: 1,
+    q: "Phát biểu nào sau đây đúng về \"Rủi ro suy giảm chất lượng tín dụng\"?",
+    opts: [
+      "Tồn tại ngay cả khi khách hàng chưa vỡ nợ, việc chất lượng tín dụng suy giảm cũng tạo ra tổn thất.",
+      "Chỉ xảy ra khi khách hàng đã chính thức bị tuyên bố phá sản bởi tòa án.",
+      "Là loại rủi ro không gây ra bất cứ thiệt hại nào về mặt tài chính cho danh mục đầu tư.",
+      "Xảy ra khi ngân hàng tự ý tăng lãi suất cho vay cố định lên quá cao."
+    ],
+    correct: 0,
+    exp: "Slide 16 nêu rõ: \"Rủi ro suy giảm chất lượng tín dụng: tồn tại ngay cả khi khách hàng chưa vỡ nợ, việc chất lượng tín dụng suy giảm cũng tạo ra tổn thất.\""
+  },
+  {
+    ch: 1,
+    q: "Thông tin trích dẫn từ Báo cáo tài chính của Vietcombank tại slide 17 chỉ ra họ tiến hành phân loại nợ dựa trên yêu cầu của văn bản pháp lý nào?",
+    opts: [
+      "Thông tư 11 (Thuyết minh 2(f)).",
+      "Thông tư 41 (Tỷ lệ an toàn vốn).",
+      "Thông tư 13 (Kiểm soát nội bộ).",
+      "Quyết định 1622 của Ngân hàng Nhà nước."
+    ],
+    correct: 0,
+    exp: "Slide 17 ghi nhận Vietcombank tiến hành phân loại nợ đối với các khoản cho vay, cam kết ngoại bảng... \"dựa trên yêu cầu của Thông tư 11 (Thuyết minh 2(f)), qua đó thường xuyên đánh giá rủi ro...\""
+  },
+  {
+    ch: 1,
+    q: "Các tham số thị trường biến động ngẫu nhiên bao gồm lãi suất, tỷ giá, giá cổ phiếu, giá hàng hóa được gọi là:",
+    opts: [
+      "\"Yếu tố rủi ro\" (Risk factors).",
+      "\"Tham chiếu thị trường\" (Market benchmark).",
+      "\"Chỉ số biến động ngẫu nhiên\" (Random indicators).",
+      "\"Biến động hệ thống\" (Systematic volatility)."
+    ],
+    correct: 0,
+    exp: "Slide 19 ghi: \"Các tham số thị trường biến động ngẫu nhiên được gọi là 'yếu tố rủi ro', bao gồm lãi suất, giá cổ phiếu, giá hàng hóa hoặc tỷ giá.\""
+  },
+  {
+    ch: 1,
+    q: "Rủi ro thị trường còn có tên gọi khác là gì đối với các công cụ tài chính được giao dịch?",
+    opts: [
+      "Rủi ro giá (Price risk).",
+      "Rủi ro hệ thống (Systemic risk).",
+      "Rủi ro biến động vốn (Capital volatility risk).",
+      "Rủi ro hạch toán ngoại bảng (Off-balance sheet risk)."
+    ],
+    correct: 0,
+    exp: "Theo dòng cuối cùng của slide 19: \"Rủi ro thị trường còn gọi là rủi ro giá đối với các công cụ tài chính được giao dịch.\""
+  },
+  {
+    ch: 1,
+    q: "\"Rủi ro tiền tệ\" (một nhánh của rủi ro thị trường) là:",
+    opts: [
+      "Rủi ro mà giá trị của các công cụ tài chính bị biến động xuất phát từ biến động tỷ giá.",
+      "Rủi ro mà người vay ngoại tệ không trả được nợ bằng đồng nội tệ VND.",
+      "Sự thiếu hụt dự trữ ngoại hối của ngân hàng khi Ngân hàng Nhà nước thắt chặt tiền tệ.",
+      "Mất mát tài chính phát sinh do ngân hàng in ấn sai mẫu tiền giấy quốc gia."
+    ],
+    correct: 0,
+    exp: "Slide 22 định nghĩa: \"Rủi ro tiền tệ là rủi ro mà giá trị của các công cụ tài chính bị biến động xuất phát từ biến động tỷ giá.\""
+  },
+  {
+    ch: 1,
+    q: "Biện pháp nào sau đây có thể được thiết lập để đảm bảo rủi ro tiền tệ được duy trì trong hạn mức quy định?",
+    opts: [
+      "Hạn mức trạng thái cho từng loại tiền tệ.",
+      "Cấm hoàn toàn việc kinh doanh các loại ngoại tệ ngoại trừ USD.",
+      "Tự động chuyển đổi tất cả số dư ngoại tệ về VND vào cuối ngày làm việc.",
+      "Mua bảo hiểm tỷ giá của tất cả các khoản cho vay bằng EUR."
+    ],
+    correct: 0,
+    exp: "Slide 22 ghi rõ: \"Vietcombank đã thiết lập hạn mức trạng thái cho từng loại tiền tệ dựa trên hệ thống đánh giá rủi ro nội bộ của Vietcombank và các quy định của NHNNVN.\""
+  },
+  {
+    ch: 1,
+    q: "Quy trình quản lý rủi ro ngân hàng được mô tả chi tiết dưới dạng biểu đồ gồm các bước chính nào?",
+    opts: [
+      "Communicating/Consulting - Establishing the Context - Risk Assessment - Risk Treatment - Risk Monitoring/Review.",
+      "Risk Identification - Risk Analysis - Risk Measurement - Risk Reporting - Capital Allocation.",
+      "Establishing the Context - Internal Audit - Supervisory Review - Capital Adequacy - Disclosure.",
+      "First Line of Defense - Second Line of Defense - Third Line of Defense - Board of Directors."
+    ],
+    correct: 0,
+    exp: "Slide 31 (Figure 3.2 Key activities of the risk management process) trình bày quy trình 5 bước cơ bản: Giao tiếp & Tư vấn; Thiết lập bối cảnh; Đánh giá rủi ro; Xử lý rủi ro; Giám sát & Đánh giá lại."
+  },
+  {
+    ch: 1,
+    q: "Các bước \"Đánh giá rủi ro\" (Risk assessment) theo trình tự nào?",
+    opts: [
+      "Xác định rủi ro (Risk identification) → Phân tích rủi ro (Risk analysis) → Đánh giá rủi ro (Risk evaluation).",
+      "Thiết lập bối cảnh → Phân tích định lượng → Xử lý rủi ro.",
+      "Báo cáo rủi ro → Giám sát rủi ro → Khắc phục rủi ro.",
+      "Xác định rủi ro → Đo lường rủi ro → Trích lập dự phòng tổn thất."
+    ],
+    correct: 0,
+    exp: "Slide 34 ghi rõ: \"Đánh giá rủi ro bao gồm các bước sau: Xác định rủi ro (Risk identification) → Phân tích rủi ro (Risk analysis) → Đánh giá rủi ro (Risk evaluation).\""
+  },
+  {
+    ch: 1,
+    q: "Hành động \"Phân tán hoặc chuyển giao một phần rủi ro cho bên khác, chẳng hạn như mua bảo hiểm, ký hợp đồng chia sẻ với đối tác\" thuộc phương án xử lý rủi ro nào?",
+    opts: [
+      "Share the Risk (Chia sẻ rủi ro).",
+      "Avoid Risk (Tránh rủi ro).",
+      "Retain Risk by Informed Decision (Chấp nhận rủi ro có cân nhắc).",
+      "Change the Consequences (Thay đổi hậu quả)."
+    ],
+    correct: 0,
+    exp: "Slide 36 giải thích: \"Share the Risk (Chia sẻ rủi ro): Phân tán hoặc chuyển giao một phần rủi ro cho bên khác, chẳng hạn như mua bảo hiểm, ký hợp đồng chia sẻ với đối tác.\""
+  },
+  {
+    ch: 1,
+    q: "Phương án xử lý rủi ro \"Retain Risk by Informed Decision\" được giải thích là gì?",
+    opts: [
+      "Quyết định giữ lại (chịu) rủi ro sau khi đã đánh giá, vì chi phí giảm thiểu hoặc tránh rủi ro có thể cao hơn lợi ích.",
+      "Không tham gia hoặc chấm dứt hoàn toàn hoạt động có thể gây ra rủi ro tổn thất tài chính.",
+      "Trực tiếp loại bỏ hoàn toàn nguyên nhân/nguồn gốc sâu xa phát sinh rủi ro vỡ nợ.",
+      "Mở rộng đầu tư mạo hiểm với kỳ vọng thu về mức lợi nhuận cao vượt bậc."
+    ],
+    correct: 0,
+    exp: "Slide 36 ghi rõ: \"Retain Risk by Informed Decision (Chấp nhận rủi ro một cách có cân nhắc): Quyết định giữ lại (chịu) rủi ro sau khi đã đánh giá, vì chi phí giảm thiểu hoặc tránh rủi ro có thể cao hơn lợi ích.\""
+  },
+  {
+    ch: 1,
+    q: "Hiệp ước Basel được ban hành bởi một tổ chức có tên là gì và đặt văn phòng trang chủ chính thức tại website của tổ chức nào?",
+    opts: [
+      "Ủy ban Basel về Giám sát Ngân hàng, thuộc Ngân hàng Thanh toán Quốc tế (BIS) - website: bis.org.",
+      "Hội đồng Thống đốc hệ thống Dự trữ Liên bang Mỹ (FED) - website: federalreserve.gov.",
+      "Quỹ Tiền tệ Quốc tế (IMF) phối hợp với Ngân hàng Thế giới (WB) - website: imf.org.",
+      "Hiệp hội các nhà quản lý rủi ro quốc tế (GARP) - website: garp.org."
+    ],
+    correct: 0,
+    exp: "Theo slide 38, Hiệp ước Basel do Ủy ban Basel về Giám sát Ngân hàng trực thuộc Ngân hàng Thanh toán Quốc tế (Bank for International Settlements – BIS) ban hành. Trang chủ là: https://www.bis.org/bcbs/index.htm"
+  },
+  {
+    ch: 1,
+    q: "Nội dung cốt lõi của Hiệp ước Basel I ban hành năm 1988 tập trung kiểm soát loại rủi ro nào với tỷ lệ vốn tối thiểu bao nhiêu?",
+    opts: [
+      "Tập trung vào Rủi ro tín dụng với tỷ lệ vốn tối thiểu là 8% tổng tài sản có trọng số rủi ro.",
+      "Tập trung vào Rủi ro thị trường và tỷ giá với tỷ lệ vốn tối thiểu là 4.5%.",
+      "Tập trung vào Rủi ro vận hành với hệ số CAR bắt buộc đạt 10%.",
+      "Tập trung kiểm soát Rủi ro thanh khoản ngắn hạn LCR đạt tối thiểu 100%."
+    ],
+    correct: 0,
+    exp: "Slide 39 ghi nhận Basel I (1988) thiết lập tỷ lệ vốn tối thiểu là 8% tổng tài sản có trọng số rủi ro và tập trung chính yếu vào rủi ro tín dụng."
+  },
+  {
+    ch: 1,
+    q: "Hiệp ước Basel II (2004) được xây dựng dựa trên cấu trúc bao nhiêu trụ cột chính?",
+    opts: [
+      "Ba trụ cột (Trụ cột 1: Vốn tối thiểu; Trụ cột 2: Giám sát nội bộ; Trụ cột 3: Kỷ luật thị trường).",
+      "Bốn trụ cột (Vốn tối thiểu, Giám sát, Công khai thông tin, Đệm vốn phòng ngừa).",
+      "Hai trụ cột (Tỷ lệ an toàn vốn và Kiểm toán hệ thống phòng ngừa rủi ro nội bộ).",
+      "Năm trụ cột bao quát toàn bộ rủi ro tín dụng, thị trường, vận hành, thanh khoản và quốc gia."
+    ],
+    correct: 0,
+    exp: "Theo slide 40, Basel II bao gồm ba trụ cột chính: Trụ cột 1 (Quy định về vốn tối thiểu), Trụ cột 2 (Giám sát và quản lý rủi ro nội bộ), và Trụ cột 3 (Yêu cầu công khai thông tin)."
+  },
+  {
+    ch: 1,
+    q: "Trụ cột 1 của Basel II quy định tỷ lệ an toàn vốn tối thiểu bao gồm những rủi ro nào ở mẫu số của công thức tính?",
+    opts: [
+      "Rủi ro tín dụng, Rủi ro thị trường và Rủi ro hoạt động (vận hành).",
+      "Chỉ bao gồm Rủi ro tín dụng có trọng số rủi ro thông thường.",
+      "Rủi ro tín dụng, Rủi ro thanh khoản và Rủi ro danh tiếng ngân hàng.",
+      "Rủi ro hoạt động, Rủi ro pháp lý và Rủi ro biến động lãi suất trên sổ ngân hàng."
+    ],
+    correct: 0,
+    exp: "Slide 41 thể hiện công thức: $Capital\\,Ratio = \\frac{Total\\,Capital}{Market\\,Risk + Credit\\,Risk + Operational\\,Risk} \\ge 8\\%$. Mẫu số gồm rủi ro thị trường, tín dụng và hoạt động."
+  },
+  {
+    ch: 1,
+    q: "Mục tiêu cốt lõi của Trụ cột 3 (Market Discipline - Kỷ luật thị trường) trong Basel II là gì?",
+    opts: [
+      "Khuyến khích kỷ luật thị trường bằng cách yêu cầu công khai thông tin vốn, mức độ rủi ro và quy trình đánh giá vốn.",
+      "Trao quyền cho các cơ quan quản lý nhà nước để trực tiếp phạt tiền và đình chỉ hoạt động ngân hàng vi phạm.",
+      "Buộc ngân hàng phải bảo mật tuyệt đối mọi số liệu tài chính nội bộ để tránh làn sóng rút tiền hàng loạt.",
+      "Thiết lập một cơ chế định giá thống nhất cho toàn bộ dịch vụ cho vay của thị trường."
+    ],
+    correct: 0,
+    exp: "Slide 43 ghi rõ: Trụ cột 3 \"Nhằm mục đích khuyến khích kỷ luật thị trường bằng cách phát triển một bộ yêu cầu công bố thông tin, cho phép các bên tham gia thị trường đánh giá các thông tin quan trọng về vốn...\""
+  },
+  {
+    ch: 1,
+    q: "Basel III ban hành năm 2010 (sau khủng hoảng 2008) đã đưa ra những thay đổi cốt lõi nào so với Basel II?",
+    opts: [
+      "Tăng tỷ lệ vốn cấp 1 (CET1) lên ít nhất 4.5%, giới thiệu tỷ lệ thanh khoản LCR & NSFR, bổ sung đệm vốn.",
+      "Giảm tỷ lệ vốn tối thiểu (CAR) xuống còn 6% để kích thích ngân hàng cho vay hỗ trợ nền kinh tế vĩ mô.",
+      "Bỏ hoàn toàn việc quản lý rủi ro vận hành để tập trung 100% vào rủi ro tỷ giá.",
+      "Hợp nhất hoàn toàn ba trụ cột của Basel II thành một chỉ số giám sát duy nhất."
+    ],
+    correct: 0,
+    exp: "Slide 44 chỉ ra Basel III: Tăng yêu cầu vốn (CET1 lên ít nhất 4.5% vào 2015), giới thiệu các tỷ lệ đo lường thanh khoản bắt buộc (LCR, NSFR) và đặt ra các đệm vốn bổ sung."
+  },
+  {
+    ch: 1,
+    q: "Tại Việt Nam, văn bản pháp lý chính thức hướng dẫn quy định về tỷ lệ an toàn vốn (CAR) theo phương pháp tiêu chuẩn của Basel II là:",
+    opts: [
+      "Thông tư 41/2016/TT-NHNN.",
+      "Thông tư 13/2018/TT-NHNN.",
+      "Thông tư 11/2021/TT-NHNN.",
+      "Luật Các tổ chức tín dụng hiện hành."
+    ],
+    correct: 0,
+    exp: "Slide 45 dẫn chiếu trực tiếp: \"Tại Việt Nam, quy định về an toàn vốn tại Thông tư 41/2016/TT-NHNN...\" (áp dụng cho các ngân hàng thương mại và chi nhánh ngân hàng nước ngoài)."
+  },
+  {
+    ch: 1,
+    q: "Bộ phận Quản lý Tài sản và Nợ (ALM Department) trong ngân hàng chịu trách nhiệm chính đối với các mảng công việc nào?",
+    opts: [
+      "Quản lý nguồn vốn, bảng cân đối kế toán, rủi ro thanh khoản và rủi ro lãi suất.",
+      "Thẩm định chi tiết các hồ sơ cho vay bán lẻ của khách hàng cá nhân.",
+      "Phát triển và nâng cấp hệ thống phần mềm công nghệ thông tin Core Banking.",
+      "Thiết kế các gói sản phẩm tiền gửi tiết kiệm tích lũy cho doanh nghiệp."
+    ],
+    correct: 0,
+    exp: "Slide 47 viết: \"Bộ phận ALM (Asset and Liability Management Department) chịu trách nhiệm quản lý nguồn vốn và bảng cân đối của ngân hàng, và kiểm soát rủi ro thanh khoản và lãi suất.\""
+  },
+  {
+    ch: 1,
+    q: "Tại các ngân hàng thương mại Việt Nam hiện nay, ALM thường được trực tiếp quản lý và chỉ đạo bởi Ủy ban nào?",
+    opts: [
+      "Ủy ban Quản lý tài sản nợ, Tài sản có (ALCO).",
+      "Hội đồng Tín dụng cấp Hội sở.",
+      "Hội đồng Quản trị ngân hàng thương mại.",
+      "Ủy ban Nhân sự và Lương thưởng."
+    ],
+    correct: 0,
+    exp: "Slide 48 ghi nhận: \"Tại các NHTM Việt Nam, ALM thường do Ủy ban Quản lý tài sản nợ, Tài sản có (ALCO) phụ trách.\""
+  },
+  {
+    ch: 1,
+    q: "Mô hình \"Ba tuyến phòng thủ\" (Three Lines of Defense) bao gồm những thành phần nào?",
+    opts: [
+      "Tuyến 1: Đơn vị kinh doanh (Front Office); Tuyến 2: Chức năng Quản lý rủi ro; Tuyến 3: Kiểm toán nội bộ.",
+      "Tuyến 1: Ban điều hành; Tuyến 2: Ủy ban ALCO; Tuyến 3: Ban kiểm soát và thanh tra Nhà nước.",
+      "Tuyến 1: Giao dịch viên; Tuyến 2: Phòng Thẩm định; Tuyến 3: Ban Giám đốc chi nhánh.",
+      "Tuyến 1: Khách hàng; Tuyến 2: Ngân hàng thương mại; Tuyến 3: Ngân hàng Nhà nước."
+    ],
+    correct: 0,
+    exp: "Slide 49 và 50 thể hiện: Tuyến phòng thủ thứ nhất (First Line) là các đơn vị kinh doanh; Tuyến thứ hai (Second Line) là chức năng quản lý rủi ro và tuân thủ; Tuyến thứ ba (Third Line) là kiểm toán nội bộ."
+  },
+  {
+    ch: 1,
+    q: "Trách nhiệm chính của Tuyến phòng thủ thứ nhất (First Line of Defense - Đơn vị kinh doanh) là gì?",
+    opts: [
+      "Là đơn vị phát sinh rủi ro, chịu trách nhiệm theo dõi và tuân thủ các chính sách, quy trình quản lý rủi ro.",
+      "Độc lập đánh giá tính hiệu quả và khách quan của các thực hành quản lý ràm rủi ro toàn ngân hàng.",
+      "Phát triển và trực tiếp ban hành khu chính sách, hạn mức rủi ro cho toàn ngân hàng.",
+      "Thực hiện hoạt động kiểm soát định kỳ đối với các báo cáo tài chính của Hội đồng quản trị."
+    ],
+    correct: 0,
+    exp: "Slide 50 quy định: \"Tuyến phòng thủ đầu tiên là các đơn vị phát sinh rủi ro cho ngân hàng. Các bộ phận kinh doanh phải chịu trách nhiệm về việc theo dõi hiệu suất quản lý rủi ro. Họ phải tuân thủ tất cả các chính sách, quy trình...\""
+  },
+  {
+    ch: 1,
+    q: "Chức năng của Kiểm toán nội bộ (Tuyến phòng thủ thứ ba) được định nghĩa là:",
+    opts: [
+      "Đánh giá độc lập tính hiệu quả của các thực hành quản lý ràm rủi ro toàn ngân hàng.",
+      "Trực tiếp phê duyệt các khoản cho vay vượt hạn mức của chi nhánh cấp 1.",
+      "Thiết lập hạn mức trạng thái ngoại hối hàng ngày cho phòng kinh doanh tiền tệ.",
+      "Chịu trách nhiệm trực tiếp khi ngân hàng phát sinh nợ xấu vượt quá 3%."
+    ],
+    correct: 0,
+    exp: "Slide 50 ghi rõ: \"Tuyến phòng thủ thứ ba là kiểm toán nội bộ. Kiểm toán nội bộ đánh giá tính hiệu quả của các thực hành quản lý rủi ro.\""
+  },
+  {
+    ch: 1,
+    q: "Hệ thống kiểm soát nội bộ và mô hình 3 tuyến phòng thủ của các NHTM tại Việt Nam hiện nay được quy định chi tiết bởi Thông tư nào?",
+    opts: [
+      "Thông tư 13/2018/TT-NHNN.",
+      "Thông tư 41/2016/TT-NHNN.",
+      "Thông tư 11/2021/TT-NHNN.",
+      "Thông tư 02/2013/TT-NHNN."
+    ],
+    correct: 0,
+    exp: "Slide 51 dẫn chiếu trực tiếp: \"Thông tư 13/2018/TT-NHNN - kiểm soát nội bộ ngân hàng thương mại, chi nhánh ngân hàng nước ngoài.\""
+  },
+  {
+    ch: 1,
+    q: "Vai trò cốt lõi của Ủy ban Quản lý Tài sản nợ, Tài sản có (ALCO) là gì?",
+    opts: [
+      "Quản lý rủi ro thanh khoản, rủi ro thị trường (tỷ giá, lãi suất), bảo đảm cơ cấu bảng cân đối và quản lý vốn chủ sở hữu.",
+      "Tiến hành tuyển dụng, đào tạo cán bộ nhân viên và phê duyệt lương thưởng cho ban điều hành.",
+      "Phê duyệt trực tiếp từng hợp đồng tín dụng riêng lẻ có giá trị trên 500 tỷ đồng.",
+      "Chịu trách nhiệm bảo trì hệ thống máy ATM và các thiết bị phần cứng tại quầy giao dịch."
+    ],
+    correct: 0,
+    exp: "Theo trích dẫn slide 48, Ủy ban ALCO thực hiện chức năng xây dựng và giám sát chính sách phát triển thị trường, chính sách phát triển vốn; quản lý rủi ro thanh khoản; quản lý rủi ro thị trường (tỷ giá, lãi suất)..."
+  },
+
+  // ==================== CHƯƠNG 2 ====================
+  {
+    ch: 2,
+    q: "Theo định nghĩa của Bessis (2015), rủi ro thị trường là gì?",
+    opts: [
+      "Rủi ro thua lỗ do biến động bất lợi của thị trường làm giảm giá trị các vị thế mà các thành viên tham gia thị trường nắm giữ.",
+      "Rủi ro khách hàng không thực hiện đúng nghĩa vụ trả gốc và lãi như thỏa thuận trong hợp đồng tín dụng.",
+      "Rủi ro mất khả năng thanh toán các khoản nợ ngắn hạn khi đến kỳ định lại lãi suất nguồn vốn.",
+      "Rủi ro phát sinh do lỗi hệ thống công nghệ thông tin hoặc sự thiếu tuân thủ quy trình kiểm soát nội bộ."
+    ],
+    correct: 0,
+    exp: "Slide 3 ghi rõ định nghĩa của Bessis (2015): Rủi ro thị trường là rủi ro thua lỗ do biến động bất lợi của thị trường làm giảm giá trị các vị thế mà các thành viên tham gia thị trường nắm giữ."
+  },
+  {
+    ch: 2,
+    q: "Các nhân tố rủi ro (Risk Factors) chính cấu thành rủi ro thị trường bao gồm những yếu tố nào?",
+    opts: [
+      "Lãi suất, Tỷ giá hối đoái, Chỉ số cổ phiếu, Giá hàng hóa.",
+      "Lãi suất phi rủi ro, Phần bù lạm phát, Phần bù thanh khoản, Lợi suất đáo hạn YTM.",
+      "Nợ xấu nhóm 3-5, Giá trị tài sản thế chấp, Hệ số an toàn vốn CAR.",
+      "Trạng thái ngoại tệ ròng, Lũy kế chênh lệch nhạy cảm lãi suất, Thời lượng Macaulay."
+    ],
+    correct: 0,
+    exp: "Slide 3 ghi nhận 4 nhân tố rủi ro chính: Lãi suất – Tỷ giá hối đoái – Chỉ số cổ phiếu – Giá hàng hóa."
+  },
+  {
+    ch: 2,
+    q: "Định giá các công cụ giao dịch phát sinh rủi ro thị trường trong ngân hàng thương mại được thực hiện theo nguyên tắc nào?",
+    opts: [
+      "Nguyên tắc giá thị trường (Mark-to-market).",
+      "Nguyên tắc giá gốc/giá lịch sử (Historical cost).",
+      "Nguyên tắc giá trị thu hồi ước tính (Recovery value).",
+      "Nguyên tắc khấu hao tuyến tính theo thời gian."
+    ],
+    correct: 0,
+    exp: "Slide 3 chỉ rõ đặc điểm của rủi ro thị trường: Bản chất là rủi ro giá (price risk) đối với công cụ giao dịch, định giá theo nguyên tắc mark-to-market."
+  },
+  {
+    ch: 2,
+    q: "Phát biểu nào sau đây mô tả đúng về vị thế mua (Long) và bán (Short) liên quan đến rủi ro thị trường?",
+    opts: [
+      "Vị thế Long chịu lỗ khi giá tài sản cơ sở giảm; Vị thế Short chịu lỗ khi giá tài sản cơ sở tăng.",
+      "Vị thế Long chịu lỗ khi giá tài sản cơ sở tăng; Vị thế Short chịu lỗ khi giá tài sản cơ sở giảm.",
+      "Cả hai vị thế đều chịu lỗ song hành khi giá tài sản cơ sở biến động tăng mạnh.",
+      "Vị thế Long chỉ áp dụng cho tài sản ngoại bảng; Vị thế Short chỉ áp dụng cho tài sản nội bảng."
+    ],
+    correct: 0,
+    exp: "Slide 4 quy định rõ: Vị thế mua (Long position) nắm giữ tài sản hoặc hợp đồng tăng giá khi tài sản cơ sở tăng – Lỗ khi giá giảm; Vị thế bán (Short position) đi vay/bán tài sản đi mượn hoặc hợp đồng tăng giá khi tài sản cơ sở giảm – Lỗ khi giá tăng."
+  },
+  {
+    ch: 2,
+    q: "Trong hoạt động của một ngân hàng thương mại truyền thống, các vị thế nhạy cảm với lãi suất và ngoại tệ được quy ước tương ứng như thế nào?",
+    opts: [
+      "Tài sản chịu lãi = Long lãi suất, Nợ chịu lãi = Short lãi suất; Tài sản ngoại tệ = Long ngoại tệ, Nợ ngoại tệ = Short ngoại tệ.",
+      "Tài sản chịu lãi = Short lãi suất, Nợ chịu lãi = Long lãi suất; Tài sản ngoại tệ = Short ngoại tệ, Nợ ngoại tệ = Long ngoại tệ.",
+      "Cả tài sản và nợ phải trả chịu lãi đều mặc định nằm ở vị thế Long đối với lãi suất và ngoại tệ ròng.",
+      "Chỉ các hợp đồng phái sinh ngoại tệ mới phát sinh vị thế Long, còn hoạt động tín dụng thuần túy luôn là vị thế Short."
+    ],
+    correct: 0,
+    exp: "Slide 4 chỉ rõ: Tài sản chịu lãi = Long lãi suất | Nợ chịu lãi = Short lãi suất | Tài sản ngoại tệ = Long ngoại tệ | Nợ ngoại tệ = Short ngoại tệ."
+  },
+  {
+    ch: 2,
+    q: "Định nghĩa về rủi ro lãi suất (Bessis, 2015) được trình bày là:",
+    opts: [
+      "Rủi ro thu nhập hoặc giá trị kinh tế của ngân hàng bị suy giảm do biến động bất lợi của lãi suất thị trường tác động lên tài sản, nợ phải trả và cam kết ngoại bảng chịu lãi.",
+      "Rủi ro biến động chênh lệch giữa lãi suất huy động nội địa VND và lãi suất tiền gửi ngoại tệ USD.",
+      "Rủi ro các khách hàng vay vốn đồng loạt xin cơ cấu lại thời hạn trả nợ do lãi suất thị trường tăng cao.",
+      "Rủi ro ngân hàng bị phạt hành chính do áp dụng sai biểu phí trần lãi suất huy động quy định bởi NHNN."
+    ],
+    correct: 0,
+    exp: "Slide 6 trích định nghĩa rủi ro lãi suất: Rủi ro lãi suất là rủi ro thu nhập hoặc giá trị kinh tế của ngân hàng bị suy giảm do biến động bất lợi của lãi suất thị trường tác động lên tài sản, nợ phải trả và cam kết ngoại bảng chịu lãi."
+  },
+  {
+    ch: 2,
+    q: "Hai kênh truyền dẫn tác động chủ yếu của rủi ro lãi suất đến giá trị ngân hàng thương mại là:",
+    opts: [
+      "Kênh thu nhập (Earnings perspective) và Kênh giá trị kinh tế (Economic value perspective).",
+      "Kênh hạch toán kế toán (Accounting book) và Kênh danh mục giao dịch (Trading book).",
+      "Kênh rủi ro đối tác (Counterparty channel) và Kênh rủi ro thanh khoản (Liquidity channel).",
+      "Kênh huy động ngắn hạn (Short-term funding) và Kênh cho vay trung dài hạn (Long-term lending)."
+    ],
+    correct: 0,
+    exp: "Slide 8 giới thiệu hai kênh tác động: Kênh thu nhập (đo lường NII thay đổi bằng Repricing Gap) và Kênh giá trị kinh tế (đo lường hiện giá PV dòng tiền thay đổi bằng VaR, Duration-based VaR)."
+  },
+  {
+    ch: 2,
+    q: "Khe hở nhạy cảm lãi suất ròng (Repricing Gap) của một rổ kỳ hạn cụ thể được xác định bằng công thức nào?",
+    opts: [
+      "$Gap = \\text{Tài sản tái định giá} - \\text{Nợ phải trả tái định giá}$",
+      "$Gap = \\text{Tài sản nhạy cảm lãi suất} + \\text{Nợ phải trả nhạy cảm lãi suất}$",
+      "$Gap = \\frac{\\text{Tài sản tái định giá}}{\\text{Nợ phải trả tái định giá}}$",
+      "$Gap = \\text{Thu nhập lãi thuần (NII)} \\times \\text{Biến động lãi suất (\\Delta r)}$"
+    ],
+    correct: 0,
+    exp: "Slide 11 chỉ rõ: $Gap$ (chênh lệch nhạy cảm) = Tài sản tái định giá – Nợ tái định giá (theo rổ kỳ hạn)."
+  },
+  {
+    ch: 2,
+    q: "Khi phân tích số liệu thực tế của Vietcombank ngày 31/12/2023 ở slide 13, rổ kỳ hạn \"Dưới 1 tháng\" có Gap = –370.647 tỷ VND. Trạng thái này có tác động thế nào khi lãi suất tăng?",
+    opts: [
+      "Ngân hàng ở vị thế SHORT ròng ngắn hạn; khi lãi suất tăng, chi phí lãi tăng nhanh hơn doanh thu lãi làm giảm NII.",
+      "Ngân hàng ở vị thế LONG ròng ngắn hạn; khi lãi suất tăng, thu nhập lãi thuần NII tăng trưởng mạnh.",
+      "Giá trị thu nhập lãi ròng NII sẽ được bảo toàn nguyên vẹn nhờ đệm thanh khoản liên ngân hàng.",
+      "Tỷ suất sinh lợi ròng NIM tăng mạnh do ngân hàng có thể ngay lập tức tăng lãi suất cho vay."
+    ],
+    correct: 0,
+    exp: "Slide 13 phân tích rổ dưới 1 tháng của VCB: Gap âm (-370.647 tỷ) thể hiện trạng thái SHORT ròng ngắn hạn. Khi lãi suất tăng, chi phí lãi nguồn vốn tăng nhanh hơn doanh thu lãi từ cho vay, dẫn đến giảm NII."
+  },
+  {
+    ch: 2,
+    q: "Theo Thông tư 22/2019/TT-NHNN của Ngân hàng Nhà nước Việt Nam, các kỳ hạn tài sản/nợ được phân loại như thế nào?",
+    opts: [
+      "Ngắn hạn: $\\le 12$ tháng | Trung hạn: > 12 đến $\\le 60$ tháng | Dài hạn: > 60 tháng.",
+      "Ngắn hạn: $\\le 6$ tháng | Trung hạn: > 6 đến $\\le 36$ tháng | Dài hạn: > 36 tháng.",
+      "Ngắn hạn: $\\le 3$ tháng | Trung hạn: > 3 đến $\\le 12$ tháng | Dài hạn: > 12 tháng.",
+      "Ngắn hạn: $\\le 12$ tháng | Trung hạn: không phân loại | Dài hạn: > 12 tháng."
+    ],
+    correct: 0,
+    exp: "Slide 14 quy định chi tiết phân loại kỳ hạn của NHNN Việt Nam: Ngắn hạn (kỳ hạn $\\le 12$ tháng / 1 năm), Trung hạn (> 12 tháng đến $\\le 60$ tháng / 1-5 năm), Dài hạn (> 60 tháng / trên 5 năm)."
+  },
+  {
+    ch: 2,
+    q: "Bài tập 1: Ngân hàng An Bình có rổ kỳ hạn 1–3 tháng (tỷ đồng) gồm: Cho vay khách hàng lãi suất thả nổi là 800; Trái phiếu cố định tái định giá 2 tháng là 200; Tiền gửi khách hàng kỳ hạn 1–3 tháng là 1.500; Vay liên ngân hàng kỳ hạn 2 tháng là 100. Hãy tính giá trị Gap và xác định vị thế lãi suất:",
+    opts: [
+      "$Gap = -600$ tỷ đồng, vị thế Short ròng lãi suất.",
+      "$Gap = +600$ tỷ đồng, vị thế Long ròng lãi suất.",
+      "$Gap = -800$ tỷ đồng, vị thế Short ròng lãi suất.",
+      "$Gap = +400$ tỷ đồng, vị thế Long ròng lãi suất."
+    ],
+    correct: 0,
+    exp: "Tài sản tái định giá = $800 + 200 = 1.000$ tỷ. Nợ tái định giá = $1.500 + 100 = 1.600$ tỷ. $Gap = 1.000 - 1.600 = -600$ tỷ đồng (vị thế Short ròng lãi suất). (Slide 15-16)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 1 (tiếp theo): Với trạng thái $Gap = -600$ tỷ đồng của Ngân hàng An Bình, hãy xác định mức thay đổi thu nhập lãi thuần ($\\Delta NII$) khi lãi suất thị trường đồng loạt tăng $1\\%$:",
+    opts: [
+      "Giảm 6 tỷ đồng (lỗ 6 tỷ đồng).",
+      "Tăng thêm 6 tỷ đồng (lãi 6 tỷ đồng).",
+      "Giảm 60 tỷ đồng (lỗ 60 tỷ đồng).",
+      "Tăng thêm 60 tỷ đồng (lãi 60 tỷ đồng)."
+    ],
+    correct: 0,
+    exp: "Công thức tác động: $\\Delta NII = Gap \\times \\Delta r = -600 \\times 1\\% = -6$ tỷ đồng (tương ứng lỗ 6 tỷ đồng). (Slide 15-16)"
+  },
+  {
+    ch: 2,
+    q: "Khái niệm Giá trị rủi ro (Value at Risk - VaR) được định nghĩa chính xác là gì?",
+    opts: [
+      "Mức tổn thất tối đa mà một khoản đầu tư hoặc danh mục có thể chịu trong một khoảng thời gian xác định, với một mức tin cậy cho trước.",
+      "Tỷ lệ tổn thất trung bình kỳ vọng khi danh mục đầu tư rơi vào điều kiện thị trường cực đoan nhất.",
+      "Giá trị ròng còn lại của danh mục tài sản sau khi trừ đi đệm dự phòng rủi ro thị trường nội bộ.",
+      "Mức sụt giảm tối đa của chỉ tiêu thu nhập lãi thuần NII trong điều kiện kiểm tra sức chịu đựng (Stress test)."
+    ],
+    correct: 0,
+    exp: "Slide 17 ghi rõ định nghĩa: VaR (Value at Risk) là mức tổn thất tối đa mà một khoản đầu tư hoặc danh mục có thể chịu trong một khoảng thời gian xác định, với một mức tin cậy cho trước."
+  },
+  {
+    ch: 2,
+    q: "Khi tính toán VaR cho khoảng thời gian ngắn (horizon ngắn), giả định nào thường được áp dụng và công thức rút gọn tương ứng là gì?"
+    ,
+    opts: [
+      "Giả định trung bình biến động $\\mu \\approx 0 \\implies VaR = Z(\\alpha) \\times \\sigma$.",
+      "Giả định độ lệch chuẩn biến động $\\sigma \\approx 1 \\implies VaR = Z(\\alpha) + \\mu$.",
+      "Giả định danh mục không biến đổi $\\sigma \\approx 0 \\implies VaR = \\mu$.",
+      "Giả định phân phối chuẩn có phân vị $Z(\\alpha) = 1 \\implies VaR = \\sigma$."
+    ],
+    correct: 0,
+    exp: "Slide 17 ghi nhận: Với horizon ngắn, giả định trung bình $\\mu \\approx 0$, công thức rút gọn tính VaR là $VaR = Z(\\alpha) \\times \\sigma$, trong đó $Z(\\alpha)$ là phân vị phân phối chuẩn và $\\sigma$ là độ lệch chuẩn."
+  },
+  {
+    ch: 2,
+    q: "Bài tập 2: Ngân hàng nắm giữ danh mục đầu tư trị giá 500 tỷ đồng, biết biến động ngày có trung bình $\\mu \\approx 0$ và độ lệch chuẩn $\\sigma = 2,2$ tỷ đồng. Tính VaR 1 ngày ở mức tin cậy $99\\%$ (phân vị phân phối chuẩn tương ứng $Z(99\\%) = 2,33$):",
+    opts: [
+      "5,126 tỷ đồng.",
+      "2,200 tỷ đồng.",
+      "1,126 tỷ đồng.",
+      "4,400 tỷ đồng."
+    ],
+    correct: 0,
+    exp: "Công thức rút gọn: $VaR = Z(99\\%) \\times \\sigma = 2,33 \\times 2,2 = 5,126$ tỷ đồng. Có nghĩa là có $1\\%$ xác suất ngân hàng mất hơn 5,13 tỷ đồng trong 1 ngày tới. (Slide 18)"
+  },
+  {
+    ch: 2,
+    q: "Công thức tính Modified Duration ($MD$) từ Macaulay Duration và tỷ suất sinh lợi đáo hạn ($YTM$) là gì?",
+    opts: [
+      "$MD = \\frac{Macaulay\\,Duration}{1 + YTM}$",
+      "$MD = Macaulay\\,Duration \\times (1 + YTM)$",
+      "$MD = \\frac{Macaulay\\,Duration}{YTM}$",
+      "$MD = Macaulay\\,Duration \\times YTM$"
+    ],
+    correct: 0,
+    exp: "Slide 21 thể hiện rõ công thức: $MD = Macaulay\\,Duration / (1 + YTM)$, phản ánh độ nhạy của giá công cụ nợ trước thay đổi lãi suất."
+  },
+  {
+    ch: 2,
+    q: "Trong phương pháp VaR theo thời lượng có điều chỉnh (Duration-based VaR), công thức tính độ lệch chuẩn biến động giá trị danh mục ngày ($\\sigma_{P/L}$) là:",
+    opts: [
+      "$\\sigma_{P/L} = P \\times MD \\times \\sigma_{\\Delta r}$",
+      "$\\sigma_{P/L} = \\frac{P \\times MD}{\\sigma_{\\Delta r}}$",
+      "$\\sigma_{P/L} = P \\times Macaulay\\,Duration \\times \\sigma_{\\Delta r}$",
+      "$\\sigma_{P/L} = \\frac{P}{\\sigma_{\\Delta r} \\times MD}$"
+    ],
+    correct: 0,
+    exp: "Slide 19 xác định công thức: $\\sigma_{P/L} = P \\times MD \\times \\sigma_{\\Delta r}$, trong đó $P$ là giá trị thị trường danh mục, $MD$ là Modified Duration và $\\sigma_{\\Delta r}$ là độ biến động ngày của lãi suất."
+  },
+  {
+    ch: 2,
+    q: "Bài tập 3: Ngân hàng Bình Minh nắm giữ danh mục trái phiếu chính phủ có trị giá thị trường là 500 tỷ đồng, tỷ suất sinh lợi đáo hạn $YTM = 5\\%/\\text{năm}$, thời lượng Macaulay là 4,62 năm. Hãy xác định Modified Duration ($MD$):",
+    opts: [
+      "4,40 năm.",
+      "4,62 năm.",
+      "4,85 năm.",
+      "4,18 năm."
+    ],
+    correct: 0,
+    exp: "Áp dụng công thức: $MD = Macaulay\\,Duration / (1 + YTM) = 4,62 / 1,05 = 4,40$ năm. (Slide 20-21)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 3 (tiếp theo): Với danh mục trái phiếu của Ngân hàng Bình Minh ($P = 500$ tỷ đồng, $MD = 4,40$ năm), hãy xác định mức tổn thất của danh mục khi lãi suất thị trường đồng loạt tăng thêm $5\\%$ ($\\Delta r = 5\\%$):",
+    opts: [
+      "Lỗ 110 tỷ đồng.",
+      "Lỗ 22 tỷ đồng.",
+      "Lỗ 11 tỷ đồng.",
+      "Lỗ 55 tỷ đồng."
+    ],
+    correct: 0,
+    exp: "Tổn thất ước tính: $\\Delta P = -MD \\times \\Delta r \\times P = -4,40 \\times 0,05 \\times 500 = -110$ tỷ đồng (lỗ 110 tỷ). (Slide 22)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 3 (tiếp theo): Cũng với danh mục trái phiếu của Ngân hàng Bình Minh ($P = 500$ tỷ đồng, $MD = 4,40$ năm), biết độ biến động ngày của lãi suất là $\\sigma_{\\Delta r} = 0,1\\%$. Hãy tính chỉ số VaR 1 ngày của danh mục ở mức tin cậy $99\\%$ ($Z = 2,33$):",
+    opts: [
+      "5,126 tỷ đồng.",
+      "1,100 tỷ đồng.",
+      "2,200 tỷ đồng.",
+      "4,400 tỷ đồng."
+    ],
+    correct: 0,
+    exp: "Áp dụng công thức: $VaR = P \\times MD \\times \\sigma_{\\Delta r} \\times Z = 500 \\times 4,40 \\times 0,001 \\times 2,33 = 5,126$ tỷ đồng. (Slide 22)"
+  },
+  {
+    ch: 2,
+    q: "Định nghĩa về rủi ro tỷ giá (Bessis, 2015) là:",
+    opts: [
+      "Rủi ro giá trị các công cụ tài chính của ngân hàng biến động do thay đổi tỷ giá hối đoái giữa đồng tiền báo cáo và các đồng tiền khác mà ngân hàng có vị thế.",
+      "Rủi ro ngân hàng chịu tổn thất do Ngân hàng Nhà nước phá giá tiền tệ VND trên thị trường liên ngân hàng.",
+      "Rủi ro khách hàng vay nợ bằng USD không đủ khả năng mua ngoại tệ hoàn trả gốc nợ gốc khi VND mất giá.",
+      "Chênh lệch bất lợi giữa tỷ giá hối đoái tự do bên ngoài thị trường chợ đen và tỷ giá niêm yết tại quầy giao dịch."
+    ],
+    correct: 0,
+    exp: "Slide 23 định nghĩa: Rủi ro tỷ giá là rủi ro giá trị các công cụ tài chính của ngân hàng biến động do thay đổi tỷ giá hối đoái giữa đồng tiền báo cáo và các đồng tiền khác mà ngân hàng có vị thế."
+  },
+  {
+    ch: 2,
+    q: "Công thức xác định trạng thái ngoại tệ ròng (Net Open Position - NOP) và tác động của nó đối với trạng thái Dương (Long ngoại tệ) được quy định thế nào?",
+    opts: [
+      "$NOP = \\text{Tài sản ngoại tệ} - \\text{Nợ phải trả ngoại tệ}$; Trạng thái Dương (Long) sẽ LỖ khi VND lên giá.",
+      "$NOP = \\text{Tài sản ngoại tệ} + \\text{Nợ phải trả ngoại tệ}$; Trạng thái Dương (Long) sẽ LÃI khi VND lên giá.",
+      "$NOP = \\text{Tài sản ngoại tệ} - \\text{Nợ phải trả ngoại tệ}$; Trạng thái Dương (Long) sẽ LÃI khi VND lên giá.",
+      "$NOP = \\frac{\\text{Tài sản ngoại tệ}}{\\text{Nợ phải trả ngoại tệ}}$; Trạng thái Dương (Long) sẽ LỖ khi VND mất giá."
+    ],
+    correct: 0,
+    exp: "Slide 24 chỉ rõ: $NOP = \\text{Tài sản ngoại tệ} - \\text{Nợ phải trả ngoại tệ}$. Trạng thái Dương (Long ngoại tệ) sẽ LỖ khi VND lên giá (ngoại tệ mất giá) và LÃI khi VND mất giá."
+  },
+  {
+    ch: 2,
+    q: "Theo quy định pháp lý hiện hành tại Việt Nam (Thông tư 52/2018/TT-NHNN), trạng thái ngoại tệ ròng của mỗi loại ngoại tệ đối với một TCTD không được vượt quá:",
+    opts: [
+      "Giới hạn tối đa là $20\\%$ vốn tự có.",
+      "Giới hạn tối đa là $10\\%$ vốn điều lệ.",
+      "Giới hạn tối đa là $15\\%$ tổng tài sản nội bảng ngoại tệ.",
+      "Giới hạn tối đa là $30\\%$ vốn tự có của ngân hàng thương mại."
+    ],
+    correct: 0,
+    exp: "Slide 24 ghi nhận: Trạng thái mỗi loại ngoại tệ không vượt quá $20\\%$ vốn tự có theo quy định hiện hành của NHNN."
+  },
+  {
+    ch: 2,
+    q: "Hai cấu phần chính để xác định mức độ rủi ro tỷ giá (đo lường Khả năng x Tổn thất) là gì?",
+    opts: [
+      "Độ nhạy NOP (Net Open Position) cho từng loại tiền và Độ biến động tỷ giá ngày $\\sigma$.",
+      "Lũy kế chênh lệch nhạy cảm lãi suất ròng và Đệm thanh khoản tối thiểu bắt buộc.",
+      "Thời lượng Macaulay của tài sản ngoại tệ và Tỷ suất sinh lợi đáo hạn của trái phiếu USD.",
+      "Chỉ số dừng lỗ tối đa được phê duyệt và Tổng dư nợ tín dụng bằng ngoại tệ."
+    ],
+    correct: 0,
+    exp: "Slide 25 chỉ rõ rủi ro tỷ giá được đo lường bằng: Cấu phần 1 (Độ nhạy = NOP) và Cấu phần 2 (Khả năng xảy ra biến động tỷ giá $\\sigma$ từ dữ liệu lịch sử)."
+  },
+  {
+    ch: 2,
+    q: "Bài tập 4: Ngày 31/12/2023, Ngân hàng Hồng Hà có số liệu: USD: Tài sản 250 triệu, Nợ 230 triệu | EUR: Tài sản 50 triệu, Nợ 60 triệu. Xác định trạng thái ngoại tệ ròng NOP và vị thế tương ứng:",
+    opts: [
+      "NOP USD = +20 triệu (Long USD) | NOP EUR = -10 triệu (Short EUR).",
+      "NOP USD = -20 triệu (Short USD) | NOP EUR = +10 triệu (Long EUR).",
+      "NOP USD = +20 triệu (Long USD) | NOP EUR = +10 triệu (Long EUR).",
+      "NOP USD = -20 triệu (Short USD) | NOP EUR = -10 triệu (Short EUR)."
+    ],
+    correct: 0,
+    exp: "USD: NOP = $250 - 230 = +20$ triệu USD (Long). EUR: NOP = $50 - 60 = -10$ triệu EUR (Short). (Slide 26-27)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 4 (tiếp theo): Cho trạng thái của Hồng Hà ($NOP_{USD} = +20\\text{ triệu USD}$, $NOP_{EUR} = -10\\text{ triệu EUR}$). Tỷ giá ngày 31/12/2023 là USD/VND = 24.250, EUR/VND = 26.955. Đầu 2024 tỷ giá đổi thành USD/VND = 24.750, EUR/VND = 26.500. Hãy tính tổng lãi/lỗ đánh giá lại tỷ giá ròng:",
+    opts: [
+      "Lãi ròng 14,55 tỷ VND.",
+      "Lỗ ròng 14,55 tỷ VND.",
+      "Lãi ròng 5,45 tỷ VND.",
+      "Lỗ ròng 5,45 tỷ VND."
+    ],
+    correct: 0,
+    exp: "$P\\&L_{USD} = 20.000.000 \\times (24.750 - 24.250) = +10$ tỷ VND (lãi). $P\\&L_{EUR} = (-10.000.000) \\times (26.500 - 26.955) = +4,55$ tỷ VND (lãi). Tổng lãi = $+14,55$ tỷ VND. (Slide 26-27)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 5: Ngân hàng Việt Á có trạng thái ngoại tệ ròng $NOP = +30\\text{ triệu USD}$, tỷ giá hiện tại là USD/VND = 24.500. Hãy xác định trạng thái ngoại tệ ròng quy đổi sang VND ($NOP_{VND}$):",
+    opts: [
+      "735 tỷ VND.",
+      "7,35 tỷ VND.",
+      "73,5 tỷ VND.",
+      "1.225 tỷ VND."
+    ],
+    correct: 0,
+    exp: "$NOP_{VND} = 30.000.000 \\times 24.500 = 735.000$ triệu VND = 735 tỷ VND. (Slide 29-30)"
+  },
+  {
+    ch: 2,
+    q: "Bài tập 5 (tiếp theo): Với danh mục ngoại tệ quy đổi của Việt Á ($NOP_{VND} = 735\\text{ tỷ VND}$), biết độ biến động tỷ giá ngày USD/VND là $\\sigma = 0,25\\%$. Tính giá trị rủi ro VaR 1 ngày ở mức tin cậy $99\\%$ ($Z = 2,33$):",
+    opts: [
+      "4,281 tỷ VND.",
+      "1,838 tỷ VND.",
+      "4,281 triệu VND.",
+      "1,838 triệu VND."
+    ],
+    correct: 0,
+    exp: "Áp dụng công thức VaR tỷ giá: $VaR = NOP_{VND} \\times \\sigma \\times Z = 735 \\times 0,0025 \\times 2,33 = 4,281$ tỷ VND. (Slide 29-30)"
+  },
+  {
+    ch: 2,
+    q: "Trong quản trị rủi ro lãi suất, khi ngân hàng có khe hở nhạy cảm lãi suất $GAP > 0$ ($ISA > ISL$), nếu dự báo lãi suất thị trường sẽ giảm trong tương lai, biện pháp phòng ngừa rủi ro nào là phù hợp để bảo vệ NIM?",
+    opts: [
+      "Kéo dài kỳ hạn của tài sản hoặc rút ngắn kỳ hạn nguồn vốn; tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất.",
+      "Kéo dài kỳ hạn của nguồn vốn hoặc rút ngắn kỳ hạn tài sản; giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất.",
+      "Tăng cường tối đa các khoản vay lãi suất thả nổi ngắn hạn và duy trì tỷ lệ tiền gửi tiết kiệm dài hạn lãi suất cao.",
+      "Không thực hiện bất kỳ hành động nào vì Gap dương luôn mang lại lợi ích chắc chắn khi lãi suất giảm sâu."
+    ],
+    correct: 0,
+    exp: "Slide 31 ghi rõ: Khi $GAP > 0$, nếu lãi suất giảm thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn tài sản/rút ngắn kỳ hạn nguồn vốn, (2) Tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất."
+  },
+  {
+    ch: 2,
+    q: "Trong quản trị rủi ro lãi suất, khi ngân hàng có khe hở nhạy cảm lãi suất $GAP < 0$ ($ISA < ISL$), nếu dự báo lãi suất thị trường sẽ tăng trong tương lai, biện pháp phòng ngừa rủi ro thích hợp để bảo vệ NIM là?",
+    opts: [
+      "Kéo dài kỳ hạn của nguồn vốn hoặc rút ngắn kỳ hạn tài sản; giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất.",
+      "Kéo dài kỳ hạn của tài sản hoặc rút ngắn kỳ hạn nguồn vốn; tăng nguồn vốn nhạy cảm lãi suất hoặc giảm tài sản nhạy cảm lãi suất.",
+      "Chuyển dịch toàn bộ các khoản cho vay cố định sang cho vay thả nổi và gia tăng tối đa tiền gửi ngắn hạn.",
+      "Không cần thiết lập các chiến lược do Gap âm luôn mang lại thặng dư lợi nhuận NII lớn khi lãi suất tăng."
+    ],
+    correct: 0,
+    exp: "Slide 31 ghi rõ: Khi $GAP < 0$, nếu lãi suất tăng thì NIM giảm. Biện pháp quản trị là: (1) Kéo dài kỳ hạn nguồn vốn/rút ngắn kỳ hạn tài sản, (2) Giảm nguồn vốn nhạy cảm lãi suất hoặc tăng tài sản nhạy cảm lãi suất."
+  }
+];
+
+const CHAPTER_TITLES = {
+  1: "Chương 1: Tổng quan về Quản trị rủi ro",
+  2: "Chương 2: Quản lý rủi ro thị trường"
+};
+
+function chapterTitle(n) { return CHAPTER_TITLES[n] || `Chương ${n}`; }
+
+const allChapters = [...new Set(QUESTIONS.map(q => q.ch))].sort((a,b)=>a-b);
+let selectedChapters = new Set(allChapters);
+
+let activeQuestions = [];
+let current = 0;
+let answers = [];
+
+const introScreen = document.getElementById('intro-screen');
+const quizScreen = document.getElementById('quiz-screen');
+const resultScreen = document.getElementById('result-screen');
+
+function triggerMath() {
+  if (typeof renderMathInElement === 'function') {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false
+    });
+  }
+}
+
+function updateMaxQuestions() {
+  const totalAvailable = QUESTIONS.filter(q => selectedChapters.has(q.ch)).length;
+  const limitOpt = document.getElementById('limit-opt');
+  const maxText = document.getElementById('max-limit-text');
+  
+  if (totalAvailable === 0) {
+    limitOpt.disabled = true;
+    limitOpt.value = '';
+    maxText.textContent = '(Hãy chọn chương để ôn tập)';
+  } else {
+    limitOpt.disabled = false;
+    const prevVal = parseInt(limitOpt.value);
+    limitOpt.max = totalAvailable;
+    if (!prevVal || prevVal > totalAvailable || prevVal <= 0) {
+      limitOpt.value = Math.min(20, totalAvailable);
+    }
+    maxText.textContent = `(Tối đa: ${totalAvailable} câu)`;
+  }
+}
+
+function renderChips() {
+  const row = document.getElementById('chip-row');
+  row.innerHTML = '';
+  allChapters.forEach(ch => {
+    const count = QUESTIONS.filter(q => q.ch === ch).length;
+    const chip = document.createElement('div');
+    chip.className = 'chip' + (selectedChapters.has(ch) ? ' active' : '');
+    chip.innerHTML = `<span class="box">✓</span><span>${chapterTitle(ch)}</span><span class="count">(${count} câu)</span>`;
+    chip.addEventListener('click', () => {
+      if (selectedChapters.has(ch)) {
+        selectedChapters.delete(ch);
+      } else {
+        selectedChapters.add(ch);
+      }
+      renderChips();
+    });
+    row.appendChild(chip);
+  });
+  
+  document.getElementById('picker-warning').style.display = selectedChapters.size === 0 ? 'block' : 'none';
+  updateMaxQuestions();
+}
+renderChips();
+
+document.getElementById('start-btn').addEventListener('click', () => {
+  if (selectedChapters.size === 0) {
+    document.getElementById('picker-warning').style.display = 'block';
+    return;
+  }
+  
+  let pool = QUESTIONS.filter(q => selectedChapters.has(q.ch));
+  
+  if (document.getElementById('shuffle-opt').checked) {
+    for (let i = pool.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[j]] = [pool[j], pool[i]];
+    }
+  }
+  
+  let limitVal = parseInt(document.getElementById('limit-opt').value);
+  const totalAvailable = pool.length;
+  if (isNaN(limitVal) || limitVal <= 0) {
+    limitVal = totalAvailable;
+  } else if (limitVal > totalAvailable) {
+    limitVal = totalAvailable;
+  }
+  document.getElementById('limit-opt').value = limitVal;
+  
+  activeQuestions = pool.slice(0, limitVal);
+  current = 0;
+  answers = new Array(activeQuestions.length).fill(null);
+  
+  introScreen.style.display = 'none';
+  quizScreen.style.display = 'block';
+  renderQuestion();
+});
+
+function renderQuestion() {
+  const q = activeQuestions[current];
+  document.getElementById('progress-text').textContent = `Câu ${current+1} / ${activeQuestions.length}`;
+  const correctSoFar = answers.filter((a,i)=> a!==null && a===activeQuestions[i].correct).length;
+  document.getElementById('score-text').textContent = `Đúng: ${correctSoFar}`;
+  document.getElementById('progress-fill').style.width = `${((current)/activeQuestions.length)*100}%`;
+
+  document.getElementById('q-tag').textContent = chapterTitle(q.ch).toUpperCase();
+  document.getElementById('q-num').textContent = `Câu ${current+1}`;
+  document.getElementById('q-text').textContent = q.q;
+
+  const optsDiv = document.getElementById('q-options');
+  optsDiv.innerHTML = '';
+  const labels = ['A','B','C','D'];
+  const userAnswer = answers[current];
+
+  q.opts.forEach((optText, idx) => {
+    const div = document.createElement('div');
+    div.className = 'opt';
+    if (userAnswer !== null) {
+      if (idx === q.correct) div.classList.add('correct');
+      else if (idx === userAnswer && userAnswer !== q.correct) div.classList.add('wrong');
+    } else {
+      if (idx === userAnswer) div.classList.add('selected');
+    }
+    div.innerHTML = `<span class="lab">${labels[idx]}.</span><span>${optText}</span>`;
+    if (userAnswer === null) {
+      div.addEventListener('click', () => selectAnswer(idx));
+    }
+    optsDiv.appendChild(div);
+  });
+
+  const explainDiv = document.getElementById('q-explain');
+  if (userAnswer !== null) {
+    explainDiv.innerHTML = `<strong>Giải thích đáp án:</strong> ${q.exp}`;
+    explainDiv.classList.add('show');
+  } else {
+    explainDiv.classList.remove('show');
+    explainDiv.innerHTML = '';
+  }
+
+  document.getElementById('prev-btn').disabled = current === 0;
+  document.getElementById('next-btn').disabled = userAnswer === null;
+  document.getElementById('next-btn').textContent = current === activeQuestions.length - 1 ? 'Xem kết quả ôn tập →' : 'Câu tiếp theo →';
+
+  triggerMath();
+}
+
+function selectAnswer(idx) {
+  answers[current] = idx;
+  renderQuestion();
+}
+
+document.getElementById('next-btn').addEventListener('click', () => {
+  if (current < activeQuestions.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+  if (current > 0) {
+    current--;
+    renderQuestion();
+  }
+});
+
+function showResults() {
+  quizScreen.style.display = 'none';
+  resultScreen.style.display = 'block';
+
+  let totalCorrect = 0;
+  const perChapter = {};
+  activeQuestions.forEach((q,i) => {
+    const isCorrect = answers[i] === q.correct;
+    if (isCorrect) totalCorrect++;
+    if (!perChapter[q.ch]) perChapter[q.ch] = {correct:0, total:0};
+    perChapter[q.ch].total++;
+    if (isCorrect) perChapter[q.ch].correct++;
+  });
+
+  document.getElementById('final-score').textContent = `${totalCorrect}/${activeQuestions.length}`;
+
+  const breakdown = document.getElementById('breakdown');
+  breakdown.innerHTML = '';
+  Object.keys(perChapter).map(Number).sort((a,b)=>a-b).forEach(ch => {
+    const s = perChapter[ch];
+    const item = document.createElement('div');
+    item.className = 'bd-item';
+    item.innerHTML = `<div class="n">${s.correct}/${s.total}</div><div class="l">${chapterTitle(ch)}</div>`;
+    breakdown.appendChild(item);
+  });
+
+  const pct = totalCorrect / activeQuestions.length;
+  let msg = '';
+  if (pct === 1) msg = 'Xuất sắc! Bạn đã nắm chắc toàn bộ kiến thức của PGS. TS. Lê Hoàng Anh!';
+  else if (pct >= 0.8) msg = 'Tuyệt vời! Kiến thức nền tảng về rủi ro lãi suất, tỷ giá và các mô hình quản trị của bạn rất tốt.';
+  else if (pct >= 0.6) msg = 'Khá tốt. Tuy nhiên bạn cần xem kỹ lại các câu sai, đặc biệt là các phần bài tập tính toán Gap, VaR hoặc thời lượng.';
+  else msg = 'Cần nỗ lực ôn tập kỹ hơn! Hãy đọc lại cẩn thận phần giải thích đáp án ở danh sách câu sai bên dưới nhé.';
+  document.getElementById('final-message').textContent = msg;
+
+  const failedCount = activeQuestions.length - totalCorrect;
+  const retryFailedBtn = document.getElementById('retry-failed-btn');
+  if (failedCount > 0) {
+    retryFailedBtn.style.display = 'inline-block';
+    retryFailedBtn.textContent = `Luyện lại ${failedCount} câu sai →`;
+  } else {
+    retryFailedBtn.style.display = 'none';
+  }
+
+  const reviewList = document.getElementById('review-list');
+  reviewList.innerHTML = '';
+  activeQuestions.forEach((q,i) => {
+    const isCorrect = answers[i] === q.correct;
+    const div = document.createElement('div');
+    div.className = 'review-item ' + (isCorrect ? 'correct' : 'wrong');
+    const labels = ['A','B','C','D'];
+    div.innerHTML = `<div class="rq"><span class="icon">${isCorrect ? '✓' : '✗'}</span>Câu ${i+1} (${chapterTitle(q.ch)}): ${q.q}</div>
+      <div style="font-size:13.5px; margin-bottom:4px;">Đáp án đúng: <b>${labels[q.correct]}. ${q.opts[q.correct]}</b></div>
+      ${!isCorrect ? `<div style="font-size:13.5px; margin-bottom:4px; color:var(--red);">Bạn đã chọn: ${answers[i]!==null ? labels[answers[i]]+'. '+q.opts[answers[i]] : '(chưa trả lời)'}</div>` : ''}
+      <div style="margin-top:8px; font-size:13px; color:#555; padding-left: 12px; border-left: 2px solid var(--hub-gold);">${q.exp}</div>`;
+    reviewList.appendChild(div);
+  });
+
+  triggerMath();
+}
+
+document.getElementById('review-btn').addEventListener('click', () => {
+  const list = document.getElementById('review-list');
+  const showing = list.style.display === 'block';
+  list.style.display = showing ? 'none' : 'block';
+  document.getElementById('review-btn').textContent = showing ? 'Xem lại chi tiết lỗi sai' : 'Ẩn danh sách chi tiết';
+});
+
+document.getElementById('retry-failed-btn').addEventListener('click', () => {
+  const failed = activeQuestions.filter((q, i) => answers[i] !== q.correct);
+  if (failed.length === 0) return;
+
+  activeQuestions = failed;
+  current = 0;
+  answers = new Array(activeQuestions.length).fill(null);
+
+  resultScreen.style.display = 'none';
+  document.getElementById('review-list').style.display = 'none';
+  document.getElementById('review-btn').textContent = 'Xem lại chi tiết lỗi sai';
+
+  quizScreen.style.display = 'block';
+  renderQuestion();
+});
+
+document.getElementById('restart-btn').addEventListener('click', () => {
+  current = 0;
+  answers = [];
+  activeQuestions = [];
+  resultScreen.style.display = 'none';
+  document.getElementById('review-list').style.display = 'none';
+  document.getElementById('review-btn').textContent = 'Xem lại chi tiết lỗi sai';
+  renderChips();
+  introScreen.style.display = 'block';
+});
+
+// Chạy tự động render toán học lần đầu tải trang
+window.onload = function() {
+  triggerMath();
+};
+</script>
+</body>
+</html>
